@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toyota Connected – Making Smart Charging Effortless</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700;1,900&family=Merriweather+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Merriweather Sans', sans-serif;
+      color: #fff;
+    }
+
+    /* ── Top Nav ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: #fff;
+    }
+
+    .nav-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1060;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-contact {
+      background: #ff4d6d;
+      color: #fff;
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-contact:hover {
+      background: #e8405f;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: #16142f;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      padding: 60px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 560px;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 40px;
+    }
+
+    .back-link:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .hero-heading {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .hero-heading em {
+      font-style: italic;
+      color: #f0c040;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 480px;
+      object-fit: contain;
+    }
+
+    /* ── Case Study Body ── */
+    .case-study {
+      display: flex;
+      background: #f5f1eb;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      padding: 56px 0 56px 48px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .sidebar-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff4d6d;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9b97b0;
+      text-decoration: none;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .sidebar-nav a:hover {
+      color: #1a1060;
+    }
+
+    .sidebar-nav a.active {
+      color: #1a1060;
+      font-weight: 700;
+    }
+
+    /* ── Main scroll area ── */
+    .case-content {
+      flex: 1;
+      padding: 56px 72px 100px 64px;
+      overflow-y: auto;
+    }
+
+    /* ── Section ── */
+    .cs-section {
+      margin-bottom: 96px;
+      scroll-margin-top: 32px;
+    }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-eyebrow span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff4d6d;
+      white-space: nowrap;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: rgba(0,0,0,0.15);
+      flex: 1;
+    }
+
+    .section-heading {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      color: #1a1060;
+      margin-bottom: 32px;
+    }
+
+    .section-cards {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff4d6d;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #2d2b3d;
+    }
+
+    .card-section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff4d6d;
+      margin-top: 8px;
+    }
+
+    /* ── Checklist ── */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #2d2b3d;
+    }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 31px;
+      height: 31px;
+      margin-top: 1px;
+      position: relative;
+    }
+
+    .check-icon svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    .check-icon .tick {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">designwithkat.</a>
+    <a href="#contact" class="nav-contact">Contact</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <a href="/" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Home
+      </a>
+      <p class="hero-eyebrow">Toyota Connected (EU)</p>
+      <h1 class="hero-heading">
+        Making Smart Charging<br>
+        <em>effortless</em>
+      </h1>
+      <p class="hero-sub">Project undertaken in 2024</p>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/smart-charging/header.png" alt="Smart Charging app screens" />
+    </div>
+  </header>
+
+  <!-- Case Study Body -->
+  <div class="case-study">
+
+    <!-- Sticky Sidebar -->
+    <aside class="sidebar">
+      <span class="sidebar-label">Contents</span>
+      <ul class="sidebar-nav">
+        <li><a href="#context" data-section="context">01 Context</a></li>
+        <li><a href="#user-research" data-section="user-research">02 User Research</a></li>
+        <li><a href="#challenges" data-section="challenges">03 Challenges</a></li>
+        <li><a href="#competitors" data-section="competitors">04 Looking to Competitors</a></li>
+        <li><a href="#solutions" data-section="solutions">05 Solutions</a></li>
+        <li><a href="#outcomes" data-section="outcomes">06 Outcomes</a></li>
+      </ul>
+    </aside>
+
+    <!-- Scrollable Content -->
+    <main class="case-content">
+
+      <!-- 01 Context -->
+      <section id="context" class="cs-section">
+        <div class="section-eyebrow"><span>01 Context</span></div>
+        <h2 class="section-heading">Setting the scene</h2>
+        <div class="section-cards">
+
+          <div class="card">
+            <span class="card-label">My Role</span>
+            <p>When I joined the European Toyota App team, Toyota was investing heavily in EV technology and launching a new energy management area within the app, designed to help users understand, control, and optimise energy between their car and home.</p>
+            <p>As Lead Product Designer, I owned the end-to-end experience, from discovery and research through to flow design, stakeholder alignment, and testing.</p>
+            <span class="card-section-label">Team Setup</span>
+            <p>The work was happening within an established team structure and delivery culture that really pushed for "just implement it." My role became not just about redesigning the experience, but also introducing stronger design thinking and more realistic delivery talks, often directly with senior stakeholders at Toyota.</p>
+          </div>
+
+          <div class="card">
+            <span class="card-label">Business Objectives</span>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 31 31" overflow="visible">
+                    <path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/>
+                  </svg>
+                  <svg class="tick" viewBox="0 0 14 14" fill="none">
+                    <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Optimise vehicle charging costs with a seamless EV charging experience
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 31 31" overflow="visible">
+                    <path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/>
+                  </svg>
+                  <svg class="tick" viewBox="0 0 14 14" fill="none">
+                    <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Educate users about the benefits and capabilities of V1G technology
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg viewBox="0 0 31 31" overflow="visible">
+                    <path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/>
+                  </svg>
+                  <svg class="tick" viewBox="0 0 14 14" fill="none">
+                    <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Develop user-friendly interfaces for smart charging controls that accommodate varying energy needs and preferences
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 02 User Research (placeholder) -->
+      <section id="user-research" class="cs-section">
+        <div class="section-eyebrow"><span>02 User Research</span></div>
+        <h2 class="section-heading">Understanding the user</h2>
+      </section>
+
+      <!-- 03 Challenges (placeholder) -->
+      <section id="challenges" class="cs-section">
+        <div class="section-eyebrow"><span>03 Challenges</span></div>
+        <h2 class="section-heading">What we were up against</h2>
+      </section>
+
+      <!-- 04 Competitors (placeholder) -->
+      <section id="competitors" class="cs-section">
+        <div class="section-eyebrow"><span>04 Looking to Competitors</span></div>
+        <h2 class="section-heading">Learning from the market</h2>
+      </section>
+
+      <!-- 05 Solutions (placeholder) -->
+      <section id="solutions" class="cs-section">
+        <div class="section-eyebrow"><span>05 Solutions</span></div>
+        <h2 class="section-heading">What we built</h2>
+      </section>
+
+      <!-- 06 Outcomes (placeholder) -->
+      <section id="outcomes" class="cs-section">
+        <div class="section-eyebrow"><span>06 Outcomes</span></div>
+        <h2 class="section-heading">The impact</h2>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/toyota.js" defer></script>
+
+</body>
+</html>
