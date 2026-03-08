@@ -290,6 +290,34 @@
       color: #2d2b3d;
     }
 
+    .section-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .section-row.reverse {
+      direction: rtl;
+    }
+
+    .section-row.reverse > * {
+      direction: ltr;
+    }
+
+    .section-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2d2b3d;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      height: 360px;
+      background: #e8e3da;
+      border-radius: 20px;
+    }
+
     .check-icon {
       flex-shrink: 0;
       width: 31px;
@@ -418,34 +446,54 @@
         </div>
       </section>
 
-      <!-- 02 User Research (placeholder) -->
+      <!-- 02 User Research -->
       <section id="user-research" class="cs-section">
         <div class="section-eyebrow"><span>02 User Research</span></div>
         <h2 class="section-heading">Understanding the user</h2>
+        <div class="section-row">
+          <p class="section-body">We conducted interviews with EV owners across Europe to understand their current charging habits, pain points, and mental models around energy costs. Key themes emerged around confusion with tariff structures, anxiety about charge levels, and lack of trust in automated systems.</p>
+          <div class="img-placeholder"></div>
+        </div>
       </section>
 
-      <!-- 03 Challenges (placeholder) -->
+      <!-- 03 Challenges -->
       <section id="challenges" class="cs-section">
         <div class="section-eyebrow"><span>03 Challenges</span></div>
         <h2 class="section-heading">What we were up against</h2>
+        <div class="section-row reverse">
+          <p class="section-body">Smart charging sits at the intersection of complex energy tariffs, vehicle hardware constraints, and highly varied user needs. Communicating the value of ceding control to an automated system — while keeping users informed and in control — proved to be the core design challenge.</p>
+          <div class="img-placeholder"></div>
+        </div>
       </section>
 
-      <!-- 04 Competitors (placeholder) -->
+      <!-- 04 Competitors -->
       <section id="competitors" class="cs-section">
         <div class="section-eyebrow"><span>04 Looking to Competitors</span></div>
         <h2 class="section-heading">Learning from the market</h2>
+        <div class="section-row">
+          <p class="section-body">We audited smart charging flows from Volkswagen, Tesla, Octopus Energy, and Ohme. While most apps offered scheduling, few handled the onboarding of smart charging in a way that built genuine user confidence. This gap represented a clear opportunity to differentiate.</p>
+          <div class="img-placeholder"></div>
+        </div>
       </section>
 
-      <!-- 05 Solutions (placeholder) -->
+      <!-- 05 Solutions -->
       <section id="solutions" class="cs-section">
         <div class="section-eyebrow"><span>05 Solutions</span></div>
         <h2 class="section-heading">What we built</h2>
+        <div class="section-row reverse">
+          <p class="section-body">We designed a four-step onboarding flow that walked users through setting a departure time, minimum charge level, and maximum charge — framing smart charging as a tool that works for them, not against them. Clear progress indicators and plain-language explanations reduced drop-off significantly in testing.</p>
+          <div class="img-placeholder"></div>
+        </div>
       </section>
 
-      <!-- 06 Outcomes (placeholder) -->
+      <!-- 06 Outcomes -->
       <section id="outcomes" class="cs-section">
         <div class="section-eyebrow"><span>06 Outcomes</span></div>
         <h2 class="section-heading">The impact</h2>
+        <div class="section-row">
+          <p class="section-body">The redesigned smart charging flow launched to Toyota Connected users across Europe. Early data showed a marked increase in smart charging activation rates and a reduction in support contacts related to charging setup. Stakeholder feedback highlighted the onboarding as a benchmark for future energy features.</p>
+          <div class="img-placeholder"></div>
+        </div>
       </section>
 
     </main>
