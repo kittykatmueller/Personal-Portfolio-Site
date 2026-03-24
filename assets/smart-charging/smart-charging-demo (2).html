@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#16142f;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Charging Demo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #16142f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    padding: 30px 40px;
+  }
+
+  /* Desk surface soft reflection */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(to top, rgba(255,255,255,0.025) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Aluminium outer frame */
+  .phone-shell {
+    position: relative;
+    padding: 13px;
+    border-radius: 62px;
+    background: linear-gradient(160deg, #5a5a5a 0%, #2e2e2e 35%, #1c1c1c 55%, #3c3c3c 100%);
+    box-shadow:
+      inset 0 1.5px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.6);
+    /* no transform — keeps rendered width predictable */
+  }
+
+  /* Physical buttons */
+  .btn-power {
+    position: absolute; right: -4px; top: 190px;
+    width: 4px; height: 76px;
+    background: linear-gradient(to right, #2a2a2a, #555, #2a2a2a);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  }
+  .btn-vol-up {
+    position: absolute; left: -4px; top: 165px;
+    width: 4px; height: 46px;
+    background: linear-gradient(to left, #2a2a2a, #555, #2a2a2a);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  }
+  .btn-vol-down {
+    position: absolute; left: -4px; top: 222px;
+    width: 4px; height: 46px;
+    background: linear-gradient(to left, #2a2a2a, #555, #2a2a2a);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  }
+  .btn-silent {
+    position: absolute; left: -4px; top: 112px;
+    width: 4px; height: 34px;
+    background: linear-gradient(to left, #2a2a2a, #555, #2a2a2a);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  }
+
+  /* Dynamic island — lives inside .phone screen */
+  .dynamic-island {
+    position: absolute;
+    top: 12px; left: 50%; transform: translateX(-50%);
+    width: 118px; height: 34px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 200;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+  }
+
+  .phone {
+    width: 390px; height: 844px;
+    background: #000;
+    border-radius: 48px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  .screen {
+    position: absolute; inset: 0;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .screen.active { opacity: 1; pointer-events: auto; }
+
+  .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 28px 8px;
+    font-size: 15px; font-weight: 600; color: #fff;
+    position: relative; z-index: 10;
+  }
+  .status-icons { display: flex; gap: 6px; align-items: center; }
+
+  .nav-bar {
+    display: flex; align-items: center; justify-content: center;
+    padding: 4px 28px 12px; position: relative;
+  }
+  .nav-back { position: absolute; left: 28px; color: #fff; font-size: 20px; opacity: 0.8; }
+  .nav-title { color: #fff; font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+
+  /* Dots sit clearly above the CTA */
+  .dots {
+    display: flex; justify-content: center; gap: 8px;
+    position: absolute; bottom: 108px; left: 0; right: 0;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    transition: background 0.3s;
+  }
+  .dot.active { background: #fff; }
+
+  .btn-next {
+    position: absolute; bottom: 40px; right: 28px;
+    background: #fff; color: #000; border: none;
+    border-radius: 16px; padding: 16px 32px;
+    font-size: 17px; font-weight: 600; cursor: pointer;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .screen.active .btn-next { opacity: 1; transform: translateY(0); }
+
+  .home-indicator {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    width: 130px; height: 5px;
+    background: rgba(255,255,255,0.3); border-radius: 3px;
+  }
+
+  /* ── SCREEN 0 ── */
+  .s0-headline {
+    color: #fff; font-size: 38px; font-weight: 700;
+    line-height: 1.15; letter-spacing: -1px;
+    text-align: center; padding: 24px 36px 0;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+  }
+  #screen0.active .s0-headline { opacity: 1; transform: translateY(0); }
+
+  .wave-wrap {
+    position: absolute; bottom: 130px; left: 0; right: 0; height: 320px;
+    opacity: 0; transition: opacity 1s ease 0.5s;
+  }
+  #screen0.active .wave-wrap { opacity: 1; }
+
+  /* ── SCREEN 1 ── */
+  .s1-content { padding: 16px 32px 0; }
+
+  .s1-headline {
+    color: #fff; font-size: 26px; font-weight: 600;
+    line-height: 1.25; letter-spacing: -0.4px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+  }
+  #screen1.active .s1-headline { opacity: 1; transform: translateY(0); }
+
+  .chart-wrap {
+    margin-top: 20px; padding: 10px 8px 8px;
+    position: relative;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
+  }
+  #screen1.active .chart-wrap { opacity: 1; transform: translateY(0); }
+
+  .chart-pound { color: #aaa; font-size: 13px; margin-bottom: 4px; padding-left: 4px; }
+  .chart-svg { width: 100%; }
+
+  /* The highlight zone box — wipes in from left */
+  .chart-highlight {
+    position: absolute;
+    bottom: 22px; right: 8px;
+    width: 43%; height: 80%;
+    border: 1.5px solid rgba(29,233,182,0.45);
+    border-radius: 6px;
+    background: rgba(29,233,182,0.07);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s ease 1.5s;
+    overflow: hidden;
+  }
+  #screen1.active .chart-highlight { clip-path: inset(0 0% 0 0); }
+
+  /* Label at top of zone */
+  .zone-label {
+    position: absolute; top: 7px; left: 0; right: 0;
+    text-align: center;
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; color: #1de9b6;
+    opacity: 0; transition: opacity 0.4s ease 2.6s;
+  }
+  #screen1.active .zone-label { opacity: 1; }
+
+  /* "Lower price" pill at bottom of zone */
+  .zone-pill {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(29,233,182,0.15);
+    border: 1px solid rgba(29,233,182,0.3);
+    border-radius: 20px; padding: 4px 10px;
+    white-space: nowrap;
+    opacity: 0; transition: opacity 0.4s ease 2.9s;
+  }
+  #screen1.active .zone-pill { opacity: 1; }
+  .zone-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: #1de9b6; flex-shrink: 0; }
+  .zone-pill-text { font-size: 9.5px; font-weight: 700; color: #1de9b6; letter-spacing: 0.3px; }
+
+  /* Arrow pointing down into the zone from outside */
+  .chart-arrow {
+    position: absolute;
+    bottom: 40px; right: 56%;
+    opacity: 0; transition: opacity 0.4s ease 2.5s;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  #screen1.active .chart-arrow { opacity: 1; }
+  .chart-arrow-text { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.5); white-space: nowrap; }
+  .chart-arrow-line { width: 1px; height: 14px; background: rgba(255,255,255,0.25); }
+  .chart-arrow-tip {
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid rgba(255,255,255,0.3);
+  }
+
+  .chart-x-labels {
+    display: flex; justify-content: space-between;
+    padding: 4px 8px 0; color: #888; font-size: 12px;
+  }
+
+  /* ── SCREEN 2 ── */
+  .s2-content { padding: 16px 32px 0; text-align: center; }
+
+  .s2-headline {
+    color: #fff; font-size: 22px; font-weight: 500;
+    line-height: 1.35; letter-spacing: -0.3px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+  }
+  #screen2.active .s2-headline { opacity: 1; transform: translateY(0); }
+
+  .ring-wrap {
+    margin: 28px auto 0; width: 220px; height: 220px;
+    position: relative;
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+  }
+  #screen2.active .ring-wrap { opacity: 1; transform: scale(1); }
+
+  .ring-svg { width: 220px; height: 220px; transform: rotate(-90deg); }
+  .ring-bg   { fill: none; stroke: #222; stroke-width: 14; }
+  .ring-gray { fill: none; stroke: #555; stroke-width: 14; stroke-linecap: round; stroke-dasharray: 628; stroke-dashoffset: 628; }
+  .ring-teal { fill: none; stroke: url(#tealGrad); stroke-width: 14; stroke-linecap: round; stroke-dasharray: 628; stroke-dashoffset: 628; }
+
+  .ring-text {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .ring-percent { color: #fff; font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 1; }
+  .ring-subtext { color: #fff; font-size: 15px; font-weight: 600; margin-top: 6px; opacity: 0; transition: opacity 0.4s ease; }
+
+  .btn-setup {
+    position: absolute; bottom: 40px; left: 28px; right: 28px;
+    background: #fff; color: #000; border: none;
+    border-radius: 16px; padding: 18px;
+    font-size: 17px; font-weight: 600; cursor: pointer;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease 1.8s, transform 0.4s ease 1.8s;
+  }
+  #screen2.active .btn-setup { opacity: 1; transform: translateY(0); }
+
+  /* Tap cursor */
+  .tap-cursor {
+    position: absolute; width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6);
+    pointer-events: none; opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    z-index: 100;
+  }
+  .tap-cursor.visible { opacity: 1; }
+  .tap-cursor.tapping { transform: translate(-50%, -50%) scale(0.7); }
+</style>
+</head>
+<body>
+<div class="phone-shell">
+  <div class="btn-silent"></div>
+  <div class="btn-vol-up"></div>
+  <div class="btn-vol-down"></div>
+  <div class="btn-power"></div>
+<div class="phone">
+  <div class="dynamic-island"></div>
+
+  <!-- ── SCREEN 0: Intro ── -->
+  <div class="screen active" id="screen0">
+    <div style="background:#000;height:100%;position:relative;">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="white"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="0" width="3" height="12" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="white"><path d="M8 2.4C5.6 2.4 3.4 3.4 1.8 5L0 3.2C2.1 1.2 4.9 0 8 0s5.9 1.2 8 3.2L14.2 5C12.6 3.4 10.4 2.4 8 2.4z" opacity=".4"/><path d="M8 5.6C6.4 5.6 5 6.2 3.9 7.2L2.1 5.4C3.6 4 5.7 3.2 8 3.2s4.4.8 5.9 2.2L12.1 7.2C11 6.2 9.6 5.6 8 5.6z" opacity=".7"/><path d="M8 8.8c-1 0-1.9.4-2.5 1L8 12l2.5-2.2C9.9 9.2 9 8.8 8 8.8z"/></svg>
+          <svg width="28" height="13" viewBox="0 0 28 13" fill="none"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="18" height="10" rx="2" fill="white"/><path d="M25 4.5v4a2.5 2.5 0 000-4z" fill="white" opacity=".4"/></svg>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <span class="nav-back">‹</span>
+        <span class="nav-title">Smart Charging</span>
+      </div>
+      <div class="s0-headline">Elevate your EV journey with Smart Charging</div>
+      <div class="wave-wrap">
+        <canvas id="waveCanvas" width="390" height="320" style="width:390px;height:320px;"></canvas>
+      </div>
+      <div class="dots">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <button class="btn-next" id="btnNext0" style="transition-delay:0.9s;">Next</button>
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <!-- ── SCREEN 1: Chart ── -->
+  <div class="screen" id="screen1">
+    <div style="background:linear-gradient(180deg,#0a2318 0%,#061a13 40%,#061a13 100%);height:100%;">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="white"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="0" width="3" height="12" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="white"><path d="M8 2.4C5.6 2.4 3.4 3.4 1.8 5L0 3.2C2.1 1.2 4.9 0 8 0s5.9 1.2 8 3.2L14.2 5C12.6 3.4 10.4 2.4 8 2.4z" opacity=".4"/><path d="M8 5.6C6.4 5.6 5 6.2 3.9 7.2L2.1 5.4C3.6 4 5.7 3.2 8 3.2s4.4.8 5.9 2.2L12.1 7.2C11 6.2 9.6 5.6 8 5.6z" opacity=".7"/><path d="M8 8.8c-1 0-1.9.4-2.5 1L8 12l2.5-2.2C9.9 9.2 9 8.8 8 8.8z"/></svg>
+          <svg width="28" height="13" viewBox="0 0 28 13" fill="none"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="18" height="10" rx="2" fill="white"/><path d="M25 4.5v4a2.5 2.5 0 000-4z" fill="white" opacity=".4"/></svg>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <span class="nav-back">‹</span>
+        <span class="nav-title">Smart Charging</span>
+      </div>
+      <div class="s1-content">
+        <div class="s1-headline">Smart charging maximises savings and efficiency by ensuring your EV charges at the best times.</div>
+        <div class="chart-wrap" id="chartWrap">
+          <div class="chart-pound">£</div>
+
+          <svg class="chart-svg" viewBox="0 0 310 165" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1de9b6" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#1de9b6" stop-opacity="0.02"/>
+              </linearGradient>
+              <linearGradient id="zoneAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1de9b6" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#1de9b6" stop-opacity="0.05"/>
+              </linearGradient>
+              <clipPath id="chartClip">
+                <rect x="0" y="0" width="0" height="165" id="clipRect"/>
+              </clipPath>
+            </defs>
+
+            <!-- Full area fill -->
+            <path d="M0,108 C15,98 28,66 50,53 C65,43 78,72 92,78 C108,84 118,42 138,36 C153,31 165,66 176,103 C184,128 196,138 214,135 C228,132 240,121 257,117 C270,113 281,119 295,125 C303,128 307,132 310,135 L310,165 L0,165 Z"
+              fill="url(#areaGrad)" clip-path="url(#chartClip)"/>
+
+            <!-- Low-price zone extra fill (brighter) -->
+            <path d="M176,103 C184,128 196,138 214,135 C228,132 240,121 257,117 C270,113 281,119 295,125 C303,128 307,132 310,135 L310,165 L176,165 Z"
+              fill="url(#zoneAreaGrad)" clip-path="url(#chartClip)"/>
+
+            <!-- Main price line -->
+            <path d="M0,108 C15,98 28,66 50,53 C65,43 78,72 92,78 C108,84 118,42 138,36 C153,31 165,66 176,103 C184,128 196,138 214,135 C228,132 240,121 257,117 C270,113 281,119 295,125 C303,128 307,132 310,135"
+              fill="none" stroke="#2dd4a4" stroke-width="2" stroke-linejoin="round" clip-path="url(#chartClip)"/>
+
+            <!-- Highlighted brighter line in low-price zone -->
+            <path d="M176,103 C184,128 196,138 214,135 C228,132 240,121 257,117 C270,113 281,119 295,125 C303,128 307,132 310,135"
+              fill="none" stroke="#1de9b6" stroke-width="2.5" stroke-linejoin="round" clip-path="url(#chartClip)"/>
+
+            <!-- Dashed divider at zone boundary -->
+            <line x1="176" y1="4" x2="176" y2="148" stroke="rgba(29,233,182,0.35)" stroke-width="1" stroke-dasharray="3,3" clip-path="url(#chartClip)"/>
+          </svg>
+
+          <!-- Zone highlight box with labels -->
+          <div class="chart-highlight" id="chartHighlight">
+            <div class="zone-label">Smart Charging</div>
+            <div class="zone-pill">
+              <div class="zone-pill-dot"></div>
+              <span class="zone-pill-text">Lower price</span>
+            </div>
+          </div>
+
+          <!-- Left side annotation -->
+          <div class="chart-arrow" id="chartArrow">
+            <span class="chart-arrow-text">Peak price</span>
+            <div class="chart-arrow-line"></div>
+            <div class="chart-arrow-tip"></div>
+          </div>
+
+          <div class="chart-x-labels">
+            <span>12 pm</span><span>8pm</span><span>5am</span>
+          </div>
+        </div>
+      </div>
+      <div class="dots">
+        <div class="dot"></div><div class="dot active"></div><div class="dot"></div>
+      </div>
+      <button class="btn-next" id="btnNext1" style="transition-delay:1s;">Next</button>
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <!-- ── SCREEN 2: Ring ── -->
+  <div class="screen" id="screen2">
+    <div style="background:#000;height:100%;">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="white"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="0" width="3" height="12" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="white"><path d="M8 2.4C5.6 2.4 3.4 3.4 1.8 5L0 3.2C2.1 1.2 4.9 0 8 0s5.9 1.2 8 3.2L14.2 5C12.6 3.4 10.4 2.4 8 2.4z" opacity=".4"/><path d="M8 5.6C6.4 5.6 5 6.2 3.9 7.2L2.1 5.4C3.6 4 5.7 3.2 8 3.2s4.4.8 5.9 2.2L12.1 7.2C11 6.2 9.6 5.6 8 5.6z" opacity=".7"/><path d="M8 8.8c-1 0-1.9.4-2.5 1L8 12l2.5-2.2C9.9 9.2 9 8.8 8 8.8z"/></svg>
+          <svg width="28" height="13" viewBox="0 0 28 13" fill="none"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="1.5" y="1.5" width="18" height="10" rx="2" fill="white"/><path d="M25 4.5v4a2.5 2.5 0 000-4z" fill="white" opacity=".4"/></svg>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <span class="nav-back">‹</span>
+        <span class="nav-title">Smart Charging</span>
+      </div>
+      <div class="s2-content">
+        <div class="s2-headline">Simply set your desired charge level and departure time, and we'll do the rest</div>
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 220 220">
+            <defs>
+              <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#0d9b82"/>
+                <stop offset="100%" stop-color="#4ef0c8"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-bg" cx="110" cy="110" r="95"/>
+            <circle class="ring-gray" cx="110" cy="110" r="95" id="ringGray"/>
+            <circle class="ring-teal" cx="110" cy="110" r="95" id="ringTeal"/>
+          </svg>
+          <div class="ring-text">
+            <div class="ring-percent" id="ringPercent">0%</div>
+            <div class="ring-subtext" id="ringSubtext">Ready by 2:00AM</div>
+          </div>
+        </div>
+      </div>
+      <div class="dots">
+        <div class="dot"></div><div class="dot"></div><div class="dot active"></div>
+      </div>
+      <button class="btn-setup">Setup Smart Charging</button>
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <div class="tap-cursor" id="tapCursor"></div>
+</div>
+</div> <!-- /phone-shell -->
+
+<script>
+  const s0 = document.getElementById('screen0');
+  const s1 = document.getElementById('screen1');
+  const s2 = document.getElementById('screen2');
+  const tapCursor   = document.getElementById('tapCursor');
+  const clipRect    = document.getElementById('clipRect');
+  const ringTeal    = document.getElementById('ringTeal');
+  const ringGray    = document.getElementById('ringGray');
+  const ringPercent = document.getElementById('ringPercent');
+  const ringSubtext = document.getElementById('ringSubtext');
+  const highlight   = document.getElementById('chartHighlight');
+
+  let current = 0;
+
+  // ── Wave ──
+  const canvas = document.getElementById('waveCanvas');
+  const ctx = canvas.getContext('2d');
+  let waveRunning = false;
+
+  function drawWave(t) {
+    ctx.clearRect(0, 0, 390, 320);
+    const waves = [
+      { amp:72, freq:0.012, sp:0.018, y:175, a:0.9,  lw:2.5 },
+      { amp:44, freq:0.016, sp:0.025, y:195, a:0.5,  lw:1.5 },
+      { amp:28, freq:0.021, sp:0.032, y:210, a:0.22, lw:1.0 },
+    ];
+    waves.forEach(w => {
+      const pts = [];
+      for (let x = 0; x <= 390; x += 2) {
+        pts.push([x, w.y + Math.sin(x*w.freq + t*w.sp*60)*w.amp + Math.sin(x*w.freq*1.7 + t*w.sp*40)*(w.amp*0.4)]);
+      }
+      ctx.beginPath();
+      pts.forEach(([x,y], i) => i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y));
+      ctx.lineTo(390,320); ctx.lineTo(0,320); ctx.closePath();
+      const g = ctx.createLinearGradient(0, w.y-w.amp, 0, 320);
+      g.addColorStop(0, `rgba(29,233,182,${w.a*0.35})`);
+      g.addColorStop(1, 'rgba(29,233,182,0)');
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath();
+      pts.forEach(([x,y], i) => i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y));
+      ctx.strokeStyle = `rgba(29,233,182,${w.a})`;
+      ctx.lineWidth = w.lw; ctx.stroke();
+    });
+  }
+
+  function waveLoop(ts) { if (!waveRunning) return; drawWave(ts/1000); requestAnimationFrame(waveLoop); }
+  function startWave() { waveRunning = true; requestAnimationFrame(waveLoop); }
+  function stopWave()  { waveRunning = false; }
+  startWave();
+
+  // ── Helpers ──
+  function tap(x, y, cb) {
+    tapCursor.style.left = x + 'px';
+    tapCursor.style.top  = y + 'px';
+    tapCursor.classList.add('visible');
+    setTimeout(() => tapCursor.classList.add('tapping'), 250);
+    setTimeout(() => tapCursor.classList.remove('tapping'), 450);
+    setTimeout(() => { tapCursor.classList.remove('visible'); cb(); }, 700);
+  }
+
+  function goTo(n) {
+    [s0,s1,s2][current].classList.remove('active');
+    current = n;
+    [s0,s1,s2][current].classList.add('active');
+  }
+
+  // ── Chart ──
+  function animateChart() {
+    clipRect.setAttribute('width', 0);
+    const start = performance.now();
+    (function step(now) {
+      const p = Math.min((now-start)/1800, 1);
+      const e = 1 - Math.pow(1-p, 3);
+      clipRect.setAttribute('width', e * 310);
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  // ── Ring ──
+  function animateRing() {
+    const circ = 2 * Math.PI * 95;
+    ringGray.style.transition = 'stroke-dashoffset 0.4s ease';
+    ringGray.style.strokeDasharray = circ;
+    ringGray.style.strokeDashoffset = circ - circ*0.05;
+    const start = performance.now();
+    setTimeout(() => {
+      (function step(now) {
+        const p = Math.min((now-start)/1400, 1);
+        const e = 1 - Math.pow(1-p, 3);
+        ringTeal.style.strokeDasharray = circ;
+        ringTeal.style.strokeDashoffset = circ - circ*e*0.8;
+        ringPercent.textContent = Math.round(e*80) + '%';
+        if (p < 1) requestAnimationFrame(step);
+        else { ringPercent.textContent = '80%'; ringSubtext.style.opacity = '1'; }
+      })(performance.now());
+    }, 200);
+  }
+
+  // ── Sequence ──
+  function step0to1() {
+    tap(340, 758, () => {
+      stopWave();
+      goTo(1);
+      setTimeout(animateChart, 400);
+      setTimeout(step1to2, 4500);
+    });
+  }
+
+  function step1to2() {
+    tap(340, 758, () => {
+      goTo(2);
+      setTimeout(animateRing, 600);
+      setTimeout(resetAndLoop, 5500);
+    });
+  }
+
+  function resetAndLoop() {
+    s2.classList.remove('active');
+    setTimeout(() => {
+      clipRect.setAttribute('width', 0);
+      highlight.style.transition = 'none';
+      highlight.style.clipPath = 'inset(0 100% 0 0)';
+      const circ = 2 * Math.PI * 95;
+      ringTeal.style.strokeDashoffset = circ;
+      ringGray.style.strokeDashoffset = circ;
+      ringPercent.textContent = '0%';
+      ringSubtext.style.opacity = '0';
+      setTimeout(() => {
+        highlight.style.transition = '';
+        current = 0;
+        s0.classList.add('active');
+        startWave();
+        setTimeout(step0to1, 3000);
+      }, 100);
+    }, 400);
+  }
+
+  setTimeout(step0to1, 3000);
+  document.getElementById('btnNext0').addEventListener('click', () => { if (current===0) step0to1(); });
+  document.getElementById('btnNext1').addEventListener('click', () => { if (current===1) step1to2(); });
+</script>
+</body>
+</html>
