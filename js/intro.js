@@ -16,7 +16,12 @@
     el.removeAttribute('data-animate');
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+  });
+
+  // Pause icon/dot CSS keyframe animations until intro is gone
+  var animEls = document.querySelectorAll('.hero-icon-head, .hero-icon-shoulders, .hero-dot');
+  animEls.forEach(function (el) {
+    el.style.animationPlayState = 'paused';
   });
 
   setTimeout(function () {
@@ -25,13 +30,22 @@
     setTimeout(function () {
       overlay.remove();
       document.body.style.overflow = '';
-      // Stagger hero elements in after intro disappears
-      heroEls.forEach(function (el, i) {
-        setTimeout(function () {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, i * 150);
+
+      // Animate hero elements in
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          heroEls.forEach(function (el, i) {
+            el.style.transition = 'opacity 0.7s ease ' + (i * 0.15) + 's, transform 0.7s ease ' + (i * 0.15) + 's';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        });
+      });
+
+      // Resume icon/dot animations (their CSS delays kick in from here)
+      animEls.forEach(function (el) {
+        el.style.animationPlayState = 'running';
       });
     }, 500);
-  }, 5500);
+  }, 4200);
 })();
