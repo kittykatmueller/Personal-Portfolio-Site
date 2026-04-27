@@ -19,5 +19,5 @@
       overlay.remove();
       document.body.style.overflow = '';
     }, 500);
-  }, 1900);
+  }, 3900);
 })();

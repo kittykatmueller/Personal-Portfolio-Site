@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>designwithkat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=DM+Sans:wght@300;400;500&family=Inter:wght@400;600&family=Merriweather:ital,wght@0,700;0,900;1,700;1,900&family=Merriweather+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body class="home">
+
+  <!-- Nav -->
+  <nav class="nav nav--home">
+    <a href="/" class="nav-logo nav-logo--text">
+      <span class="nav-logo-initials"><span class="nav-logo-k">kat</span><span class="nav-logo-m">m</span><span class="nav-logo-dot">.</span></span>
+    </a>
+    <div class="nav-actions">
+      <a href="https://www.linkedin.com/in/kathryne-m/" target="_blank" class="nav-text-link">LinkedIn</a>
+      <button class="nav-text-link nav-text-btn js-open-contact" id="nav-contact-btn">Contact</button>
+      <button class="nav-theme-toggle" id="nav-theme-toggle" aria-label="Toggle dark mode">
+        <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu" id="nav-mobile-menu">
+    <a href="https://www.linkedin.com/in/kathryne-m/" target="_blank" class="nav-mobile-link">LinkedIn</a>
+    <button class="nav-mobile-contact js-open-contact">Contact</button>
+    <div class="nav-mobile-identity">
+      <p class="nav-mobile-identity-name">Kathryne Mueller</p>
+      <p class="nav-mobile-identity-title">Senior Digital Product Designer</p>
+    </div>
+  </div>
+
+  <!-- Intro overlay -->
+  <div class="intro-overlay" id="intro-overlay">
+    <div class="intro-logo">
+      <svg viewBox="55 197 440 75" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="logo-mask">
+            <rect x="55" y="197" width="0" height="75" fill="white">
+              <animate attributeName="width" from="0" to="440" dur="1.6s" begin="0.3s" fill="freeze" calcMode="linear"/>
+            </rect>
+          </mask>
+        </defs>
+        <g fill="white" mask="url(#logo-mask)" fill-rule="nonzero">
+          <path d="M65,236.42055c0,9.53447 7.00599,13.59057 13.16916,13.59057c3.74004,0 7.2167,-1.52762 8.53361,-4.21413l0.52677,4.21413c4.47751,-0.94818 7.32205,-1.10621 9.6925,-1.10621l3.21327,0.05268v-1.36959l-1.79101,-0.42141c-1.26424,-0.26338 -2.10707,-1.31692 -2.10707,-2.58115l0.05268,-36.71561c-5.6364,1.79101 -8.00685,1.26424 -13.85395,1.5803v1.36959l0.8955,0.21071c1.73833,0.42141 2.94989,1.89636 2.94989,3.68736v7.95417c-1.89636,-0.94818 -3.95075,-1.15889 -5.53105,-1.10621c-8.48094,0 -15.75031,6.00514 -15.75031,14.85481zM82.33061,222.98801c2.63383,0.10535 3.95075,2.00171 3.95075,7.05867v14.53875c-0.63212,2.05439 -2.84454,2.68651 -4.63554,2.2651c-9.06038,-2.00171 -7.48008,-24.23125 0.6848,-23.86251z"/>
+          <path d="M117.72931,250.06379c7.4274,0 12.11563,-4.00342 14.01198,-8.95503l-1.36959,-0.52677c-0.79015,3.26595 -5.84711,7.4274 -10.32462,7.4274c-3.89807,0 -7.32205,-3.05524 -7.32205,-12.22098h19.06894c0.05268,-7.11135 -4.0561,-14.27537 -14.06466,-14.27537c-21.22868,0 -21.22868,28.55073 0,28.55073zM117.72931,222.88265c3.10792,0 4.7409,5.68908 4.9516,11.58886h-9.90321c0.21071,-5.95246 1.89636,-11.58886 4.9516,-11.58886z"/>
+          <path d="M135.79739,249.90576l1.68565,-0.73747c0.47409,-0.21071 1.05353,-0.31606 1.68565,-0.31606c0.52677,0 1.05353,0.10535 1.52762,0.21071c2.2651,0.57944 5.10963,0.94818 7.90149,0.94818c2.84454,0 5.6364,-0.36874 7.84882,-1.26424c3.47666,-1.42227 6.3212,-4.37216 6.3212,-8.16488c0,-4.63554 -4.10878,-6.95332 -8.21755,-8.42826c-4.0561,-1.52762 -10.00856,-2.89721 -10.00856,-5.47837c0,-2.4758 1.89636,-3.63469 4.31948,-3.63469c4.10878,0 9.79785,3.3713 10.11391,9.11306l1.36959,-0.05268v-10.53533l-1.63298,0.6848c-0.47409,0.21071 -1.10621,0.31606 -1.73833,0.31606c-0.47409,0 -1.00086,-0.05268 -1.52762,-0.15803c-1.84368,-0.52677 -4.42484,-0.84283 -6.95332,-0.84283c-4.63554,0 -13.01113,1.47495 -13.01113,8.21755c0,6.16317 6.95332,7.4274 11.00942,9.16573c3.63469,1.5803 6.3212,3.00257 6.3212,5.53105c0,2.79186 -2.21242,4.21413 -5.00428,4.21413c-4.68822,0 -10.95674,-3.89807 -11.2728,-11.37815h-1.36959z"/>
+          <path d="M164.82222,223.98886l0.8955,0.21071c1.79101,0.36874 2.94989,1.84368 2.94989,3.68736v15.48693c0,3.31863 -1.26424,3.68736 -3.84539,4.21413v1.36959h17.69935v-1.36959c-2.58115,-0.52677 -3.84539,-0.8955 -3.84539,-4.21413v-21.8608c-5.10963,1.52762 -8.37558,1.10621 -13.85395,1.05353zM173.67189,220.09079c3.1606,0 5.74175,-2.58115 5.74175,-5.68908c0,-3.21327 -2.58115,-5.74175 -5.74175,-5.74175c-3.10792,0 -5.74175,2.52848 -5.74175,5.74175c0,3.10792 2.63383,5.68908 5.74175,5.68908z"/>
+          <path d="M201.53783,241.84624c-6.68993,0 -6.58458,-18.91091 0.05268,-18.91091c6.63726,0 6.63726,18.85823 -0.05268,18.91091zM209.7027,222.93533c0.10535,-1.26424 1.31692,-2.94989 1.79101,-2.94989c0.10535,0 0.15803,0.10535 0.15803,0.31606c0,1.52762 1.31692,3.00257 3.00257,3.00257c1.63298,0 2.94989,-1.36959 2.94989,-3.00257c0,-1.68565 -1.31692,-3.00257 -2.94989,-3.00257c-2.52848,0 -5.32034,1.5803 -6.21584,5.16231c-1.94904,-0.57944 -4.26681,-0.94818 -6.84796,-0.94818c-17.64667,0 -20.22783,15.75031 -7.90149,20.43853c-6.3212,1.15889 -8.58629,4.84625 -6.84796,7.53276c0.8955,1.42227 2.68651,1.84368 4.84625,1.84368c3.3713,0 7.74346,-1.05353 11.43083,-1.05353c3.05524,0 5.68908,0.73747 6.84796,3.31863c2.4758,5.47837 -2.89721,7.16402 -5.53105,7.16402c-2.2651,0 -1.26424,-2.00171 -0.79015,-2.89721c0.94818,-1.94904 -0.10535,-4.26681 -2.00171,-5.10963c-0.52677,-0.21071 -1.05353,-0.31606 -1.52762,-0.31606c-1.52762,0 -2.94989,0.8955 -3.58201,2.37045c-0.57944,1.26424 -0.31606,2.63383 0.36874,3.74004c1.47495,2.42313 4.31948,3.47666 7.4274,3.58201c4.89893,0.10535 10.64068,-2.21242 13.53789,-5.89978c5.10963,-6.58458 0.15803,-13.27451 -9.16573,-12.22098c-5.32034,0.57944 -11.90492,3.74004 -16.27708,3.74004c-0.94818,0 -1.84368,-0.15803 -2.52848,-0.52677c-1.31692,-0.73747 -0.31606,-4.68822 8.58629,-4.10878c0.94818,0.10535 2.00171,0.15803 3.10792,0.15803c17.43596,0 20.12247,-15.53961 8.1122,-20.33318z"/>
+          <path d="M221.23889,223.98886l0.94818,0.21071c1.73833,0.42141 2.89721,1.84368 2.89721,3.63469l0.05268,15.53961c0,3.3713 -1.31692,3.68736 -3.89807,4.21413v1.36959h17.69935v-1.36959c-2.58115,-0.52677 -3.84539,-0.84283 -3.84539,-4.21413v-12.80042c0,-2.73918 2.42313,-5.16231 4.9516,-5.6364c2.79186,-0.47409 5.74175,0.84283 5.74175,5.47837v12.95845c0,3.3713 -1.31692,3.74004 -3.89807,4.21413v1.36959h17.69935v-1.36959c-2.52848,-0.47409 -3.84539,-0.84283 -3.84539,-4.21413v-12.80042c0,-5.74175 -3.42398,-9.0077 -9.06038,-9.0077c-3.58201,0 -8.74432,1.47495 -12.11563,5.47837l-0.47409,-5.53105c-4.79357,1.42227 -7.74346,1.10621 -12.8531,1.10621z"/>
+          <path d="M258.11253,223.98886c1.47495,0.26338 4.0561,0.84283 5.68908,5.42569l7.32205,20.43853l4.26681,-1.00086l6.21584,-17.06723l6.42655,18.06808l4.26681,-1.00086l5.84711,-15.96102c1.05353,-2.94989 3.47666,-8.32291 6.5319,-8.90235v-1.36959h-9.74518v1.36959c1.79101,4.31948 2.89721,5.6364 1.73833,8.74432l-2.2651,6.26852l-6.21584,-17.43596l-4.7409,1.05353l-5.95246,16.38243l-4.10878,-11.37815c-0.47409,-1.36959 -0.42141,-3.26595 1.42227,-3.63469v-1.36959h-16.69849z"/>
+          <path d="M306.89109,223.98886l0.8955,0.21071c1.79101,0.36874 2.94989,1.84368 2.94989,3.68736v15.48693c0,3.31863 -1.26424,3.68736 -3.84539,4.21413v1.36959h17.69935v-1.36959c-2.58115,-0.52677 -3.84539,-0.8955 -3.84539,-4.21413v-21.8608c-5.10963,1.52762 -8.37558,1.10621 -13.85395,1.05353zM315.74076,220.09079c3.1606,0 5.74175,-2.58115 5.74175,-5.68908c0,-3.21327 -2.58115,-5.74175 -5.74175,-5.74175c-3.10792,0 -5.74175,2.52848 -5.74175,5.74175c0,3.10792 2.63383,5.68908 5.74175,5.68908z"/>
+          <path d="M326.85553,223.93618c0.6848,0 1.15889,0.47409 1.15889,1.15889v17.75202c0,5.00428 4.16145,7.16402 8.1122,7.16402c1.89636,0 4.58287,-0.57944 6.05781,-2.10707l-0.94818,-1.00086c-0.31606,0.57944 -0.8955,0.8955 -1.47495,0.8955c-0.8955,0 -1.73833,-0.73747 -1.79101,-2.31777v-21.54474h3.84539l-0.52677,-2.42313c-1.26424,0.36874 -1.5803,0.47409 -3.26595,0.79015v-7.37473h-1.36959c-1.5803,3.42398 -4.7409,7.32205 -10.64068,7.63811v1.36959z"/>
+          <path d="M343.39599,210.8197l0.94818,0.21071c1.73833,0.42141 2.89721,1.84368 2.89721,3.63469l0.10535,28.70876c0,3.31863 -1.31692,3.68736 -3.89807,4.21413v1.36959h17.69935v-1.36959c-2.58115,-0.52677 -3.84539,-0.8955 -3.84539,-4.21413v-12.80042c0,-2.73918 2.42313,-5.16231 4.9516,-5.6364c2.79186,-0.47409 5.74175,0.84283 5.74175,5.47837v12.95845c0,3.3713 -1.31692,3.68736 -3.89807,4.21413v1.36959h17.69935v-1.36959c-2.52848,-0.52677 -3.84539,-0.84283 -3.84539,-4.21413v-12.80042c0.05268,-5.74175 -3.47666,-9.0077 -9.06038,-9.0077c-3.42398,0 -8.27023,1.31692 -11.64154,4.84625v-18.54217c-5.53105,1.84368 -7.95417,1.21156 -13.85395,1.5803z"/>
+          <path d="M401.12958,248.95758v-1.36959c-2.42313,-0.47409 -3.79272,-0.79015 -3.79272,-3.63469v-6.26852l8.69164,11.2728h13.85395v-1.36959c-1.47495,-0.26338 -3.21327,-0.84283 -5.00428,-2.73918l-11.43083,-11.9576l4.16145,-4.42484c1.5803,-1.68565 4.26681,-3.58201 8.797,-4.47751v-1.36959h-13.11648v1.36959c1.42227,1.84368 2.4758,3.68736 -0.57944,7.00599l-5.37302,5.74175v-28.86679c-5.6364,1.79101 -8.00685,1.21156 -13.85395,1.5803v1.31692l0.8955,0.21071c1.79101,0.42141 2.94989,1.89636 2.94989,3.68736v29.28821c0,2.84454 -1.47495,3.1606 -3.89807,3.63469v1.36959z"/>
+          <path d="M419.98782,241.16144c0,5.58372 5.58372,8.84967 10.64068,8.84967c3.52933,0 6.63726,-1.15889 7.79614,-4.89893l0.63212,4.89893c4.9516,-1.05353 7.95417,-1.10621 12.90577,-1.05353v-1.36959l-1.79101,-0.42141c-1.26424,-0.26338 -2.05439,-1.31692 -2.05439,-2.58115v-14.06466c0,-6.58458 -5.37302,-8.95503 -10.95674,-8.95503c-15.59228,0 -12.8531,9.90321 -7.26938,9.90321c2.52848,0 4.47751,-2.00171 4.47751,-4.42484c0,-1.47495 -1.36959,-3.74004 0.79015,-4.0561c2.52848,-0.36874 2.94989,3.1606 2.94989,5.47837v5.84711c-2.73918,-1.10621 -5.21499,-1.52762 -7.4274,-1.52762c-6.68993,0 -10.69336,4.21413 -10.69336,8.37558zM438.16125,235.8411v3.95075c0,5.10963 -1.31692,7.16402 -3.21327,7.53276c-6.05781,1.15889 -6.79529,-16.32976 3.21327,-11.48351z"/>
+          <path d="M454.2803,223.93618c0.6848,0 1.15889,0.47409 1.15889,1.15889v19.80641c0,10.42997 7.37473,15.38158 14.80213,15.38158c2.37045,0 4.79357,-0.52677 6.95332,-1.5803c4.58287,-2.15974 8.00685,-6.63726 7.79614,-13.22183c-0.21071,-6.26852 -4.58287,-11.85224 -9.6925,-11.85224c-0.6848,0 -1.42227,0.15803 -2.15974,0.36874c-2.58115,0.57944 -4.42484,2.89721 -4.42484,5.58372c0,3.10792 2.63383,5.74175 5.74175,5.74175c1.84368,0 3.52933,-0.8955 4.58287,-2.2651c0.8955,-1.05353 1.63298,-1.52762 2.2651,-1.52762c1.21156,0 1.94904,1.73833 2.05439,4.16145c0.26338,5.58372 -2.94989,10.11391 -6.74261,11.85224c-1.15889,0.52677 -2.37045,0.84283 -3.52933,0.84283c-4.00342,0 -7.69079,-3.47666 -7.69079,-12.90577v-21.54474h3.84539l-0.52677,-2.42313c-1.26424,0.36874 -1.5803,0.47409 -3.26595,0.79015v-7.37473h-1.36959c-1.5803,3.42398 -4.7409,7.32205 -10.64068,7.63811v1.36959z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  
+<!-- Hero -->
+<section class="home-hero">
+  <div class="home-hero-content">
+
+<h1 class="home-heading" data-animate style="transition-delay: 0.5s">Understanding <em>people</em> <svg class="hero-icon hero-icon--person" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="hero-icon-head" cx="14" cy="7" r="5" stroke="#ff4d6d" stroke-width="1.5"/><path class="hero-icon-shoulders" d="M3 23 C3 15 25 15 25 23" stroke="#ff4d6d" stroke-width="1.5" stroke-linecap="round"/></svg><br>Shaping products<span class="hero-dot">.</span></h1>
+    <p class="home-body" data-animate style="transition-delay: 0.3s">Over ten years designing digital experiences, from early-stage startups to global brands. I turn complex problems into clear, usable products.</p>
+    <div class="home-cta-group" data-animate style="transition-delay: 0.45s">
+      <a href="#work" class="home-cta">See Case Studies</a>
+      <a href="#experience" class="home-cta-link">View Work History</a>
+    </div>
+  </div>
+  <div class="home-hero-video" data-animate style="transition-delay: 0.5s">
+    <div class="hs-slide active"><img src="/assets/Portfolio/Showcase/Group 2826.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Group 2827.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Group 2828.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Group 2832.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Group 29612674.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Frame 1000000945.png" alt="" /></div>
+    <div class="hs-slide"><img src="/assets/Portfolio/Showcase/Group 1000000943.png" alt="" /></div>
+    <button class="hs-arrow hs-arrow--prev" aria-label="Previous slide">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="hs-arrow hs-arrow--next" aria-label="Next slide">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="hs-dots">
+      <div class="hs-dot active"></div>
+      <div class="hs-dot"></div>
+      <div class="hs-dot"></div>
+      <div class="hs-dot"></div>
+      <div class="hs-dot"></div>
+      <div class="hs-dot"></div>
+      <div class="hs-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Selected Work -->
+<section class="home-work" id="work">
+  <div class="home-work-header" data-animate>
+    <p class="home-work-eyebrow">Selected Work</p>
+    <h2 class="home-work-heading">Design Stories</h2>
+  </div>
+  <div class="home-cards-wrap">
+  <div class="home-cards" id="home-cards" data-animate style="transition-delay: 0.15s">
+
+    <a href="/shell/" class="home-card home-card--shell">
+      <div class="home-card-meta">
+        <span class="home-card-company">Shell Energy</span>
+        <h3 class="home-card-title">Energy insights. Real saving potential.</h3>
+        <p class="home-card-desc">Creating Shell Energy's first customer mobile app, empowering users to manage their home energy usage.</p>
+        <span class="home-card-cta">Read Case Study →</span>
+      </div>
+      <div class="home-card-demo">
+        <img src="/assets/Portfolio/Shell/energy assistant2.png" alt="Shell Energy app" class="home-card-phone-img home-card-phone-img--padded" />
+      </div>
+    </a>
+
+    <a href="/sonnen/" class="home-card home-card--sonnen">
+      <div class="home-card-meta">
+        <span class="home-card-company">Sonnen</span>
+        <h3 class="home-card-title">A smarter way to own your energy</h3>
+        <p class="home-card-desc">Designing the experience for Sonnen's home battery ecosystem, helping users take control of their energy independence.</p>
+        <span class="home-card-cta">Read Case Study →</span>
+      </div>
+      <div class="home-card-demo">
+        <img src="/assets/Portfolio/sonnen/sonnen laptop.png" alt="Sonnen app" class="home-card-phone-img home-card-phone-img--full" />
+      </div>
+    </a>
+
+    <a href="/toyota/" class="home-card home-card--toyota home-card--relative">
+      <div class="home-card-nda">
+        <span class="home-card-nda-icon">🔒</span>
+        <span class="home-card-nda-label">Under NDA</span>
+      </div>
+      <div class="home-card-meta">
+        <span class="home-card-company">Toyota Connected (EU)</span>
+        <h3 class="home-card-title">Making Smart Charging effortless</h3>
+        <p class="home-card-desc">Revamping the Smart Charging setup experience to simplify onboarding for Toyota EV owners.</p>
+        <span class="home-card-cta">Read Preview →</span>
+      </div>
+      <div class="home-card-demo home-card-demo--toyota-phones">
+        <div class="toyota-card-phones-desktop">
+          <div class="toyota-card-phone-frame toyota-card-phone--side">
+            <div class="toyota-card-phone-screen">
+              <div class="toyota-card-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Onboarding 2 - dark.png" alt="Onboarding" />
+            </div>
+          </div>
+          <div class="toyota-card-phone-frame toyota-card-phone--center">
+            <div class="toyota-card-phone-screen">
+              <div class="toyota-card-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Dashboard.png" alt="Dashboard" />
+            </div>
+          </div>
+          <div class="toyota-card-phone-frame toyota-card-phone--side">
+            <div class="toyota-card-phone-screen">
+              <div class="toyota-card-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Setup overview-1.png" alt="Setup" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/gensec-health/" class="home-card home-card--gensec home-card--relative">
+      <div class="home-card-nda">
+        <span class="home-card-nda-icon">🔒</span>
+        <span class="home-card-nda-label">Under NDA</span>
+      </div>
+      <div class="home-card-meta">
+        <span class="home-card-company">Health-Tech Startup</span>
+        <h3 class="home-card-title">See the whole picture. Get better care.</h3>
+        <p class="home-card-desc">Building a platform that connects patients and clinicians through clear, actionable health insights.</p>
+        <span class="home-card-cta">Read Preview →</span>
+      </div>
+      <div class="home-card-demo">
+        <img src="/assets/Portfolio/Gensec Health/gensec1.png" alt="Gensec Health app" class="home-card-phone-img" />
+      </div>
+    </a>
+
+  </div>
+  <div class="home-cards-dots" id="home-cards-dots"></div>
+  </div>
+  <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
+    <a href="/archive/" class="home-archive-link" style="display:none">See archive →</a>
+  </div>
+</section>
+
+<!-- Brands -->
+<section class="home-brands">
+  <p class="home-brands-label">Brands I've worked with</p>
+  <div class="home-brands-track-wrap">
+    <div class="home-brands-track">
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/Toyota.svg" alt="Toyota" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/shell.svg" alt="Shell" class="home-brand-logo home-brand-logo--icon" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/sonnen.svg" alt="Sonnen" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/EE.svg" alt="EE" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/Samsung.svg" alt="Samsung" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/adidas.svg" alt="Adidas" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/The White Company.svg" alt="The White Company" class="home-brand-logo" /></div>
+      <!-- duplicate for seamless loop -->
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/Toyota.svg" alt="Toyota" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/shell.svg" alt="Shell" class="home-brand-logo home-brand-logo--icon" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/sonnen.svg" alt="Sonnen" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/EE.svg" alt="EE" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/Samsung.svg" alt="Samsung" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/adidas.svg" alt="Adidas" class="home-brand-logo" /></div>
+      <div class="home-brand-item"><img src="/assets/Landing page/Banner/The White Company.svg" alt="The White Company" class="home-brand-logo" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="home-about">
+  <div class="home-about-inner">
+
+  <!-- Flip card photo -->
+  <div class="home-about-photo" data-animate>
+    <div class="about-flip-card" id="aboutFlipCard">
+      <div class="about-flip-inner">
+        <div class="about-flip-front">
+          <img src="/assets/Landing page/Work Photo.jpg" alt="Kat at work" class="home-about-photo-img" />
+        </div>
+        <div class="about-flip-back">
+          <img src="/assets/Landing page/personalpic.jpg" alt="Kat personally" class="home-about-photo-img about-flip-back-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="home-about-content" data-animate style="transition-delay: 0.2s">
+    <div class="about-heading-row">
+      <p class="home-about-eyebrow">Get to know me</p>
+      <!-- Toggle -->
+      <div class="about-toggle" id="aboutToggle">
+        <button class="about-toggle-btn active" data-mode="work">Professionally</button>
+        <button class="about-toggle-btn" data-mode="personal">Personally</button>
+      </div>
+    </div>
+    <h2 class="home-about-heading" id="aboutHeading">Hi 👋 I'm Kathryne Mueller.</h2>
+
+    <!-- Professional content -->
+    <div class="about-panel about-panel--work active" id="aboutWork">
+      <p class="home-about-body">Over the past 10 years I've led end-to-end product design across a variety of industries, like health, energy, retail, automotive, and telecoms. I've delivered high-impact work for leading global brands and early-stage startups alike, and adapted quickly to new domains and challenges.</p>
+      <p class="home-about-body" style="margin-top: 20px;">With a degree in Graphic &amp; Communication Design from Leeds University, I spent time earlier in my career in digital content, media, and marketing, before feeling a strong pull back to creating. What I love about UX is fundamentally what it's always been about - problem solving. Understanding what people actually <em>need</em>, and designing something that genuinely works for them.</p>
+      <p class="home-about-body" style="margin-top: 20px;">I'm excited to bring that curiosity somewhere new, so I am currently open to permanent and freelance opportunities.</p>
+    </div>
+
+    <!-- Personal content -->
+    <div class="about-panel about-panel--personal" id="aboutPersonal">
+      <p class="home-about-body">Free time is rare, but when I get it I try to make it count! I'm usually outdoors or staying active. I've recently got into kickboxing, which I love 🥊</p>
+      <p class="home-about-body" style="margin-top: 20px;">I like trying to learn something new, whether that's a craft or a recipe. I've been baking a lot lately and I'm pretty proud of my Bavarian pretzel 🥨</p>
+      <p class="home-about-body" style="margin-top: 20px;">I also speak a pretty good level of German now, after about a decade of learning, which comes in handy when I'm in the Alps, one of my favourite places in the world <span style="white-space: nowrap;">🏔️</span></p>
+      <p class="home-about-body" style="margin-top: 20px;">Family is a big part of my life, and we spend time exploring the River Thames beauty spots on weekends near our hometown in Berkshire. 🌿</p>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const toggle = document.getElementById('aboutToggle');
+  const flipCard = document.getElementById('aboutFlipCard');
+  const workPanel = document.getElementById('aboutWork');
+  const personalPanel = document.getElementById('aboutPersonal');
+  const heading = document.getElementById('aboutHeading');
+  if (!toggle) return;
+
+  toggle.querySelectorAll('.about-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      toggle.querySelectorAll('.about-toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (mode === 'personal') {
+        flipCard.classList.add('flipped');
+        workPanel.classList.remove('active');
+        personalPanel.classList.add('active');
+        function updateArrow() {
+          const isStacked = window.getComputedStyle(document.querySelector('.home-about-inner')).flexDirection === 'column';
+          heading.textContent = (isStacked ? '↑' : '←') + ' You\'ll find me here';
+        }
+        updateArrow();
+        window._aboutArrowListener = updateArrow;
+        window.addEventListener('resize', updateArrow);
+        heading.style.fontStyle = 'normal';
+      } else {
+        flipCard.classList.remove('flipped');
+        workPanel.classList.add('active');
+        personalPanel.classList.remove('active');
+        heading.textContent = 'Hi 👋 I\'m Kathryne Mueller.';
+        heading.style.fontStyle = '';
+      }
+    });
+  });
+})();
+</script>
+
+<!-- Skills -->
+<section class="home-skills">
+  <div class="home-skills-inner">
+    <div class="home-skills-header" data-animate>
+      <p class="home-experience-eyebrow">Skills</p>
+    </div>
+    <ul class="home-skills-list" data-animate style="transition-delay: 0.15s">
+      <li>AI-assisted workflow</li>
+      <li>Figma</li>
+      <li>Adobe Creative Tools</li>
+      <li>Collaboration Tools</li>
+      <li>Quantitative / Qualitative User Research</li>
+      <li>Web Analytics and Data Analysis Tools</li>
+      <li>Stakeholder Management</li>
+      <li>Running Workshops &amp; Interviews</li>
+      <li>Wireframes &amp; Prototyping</li>
+      <li>Agile Development Framework</li>
+      <li>Digital Marketing and Campaigns</li>
+      <li>Content Management</li>
+      <li>Basic knowledge of HTML, CSS &amp; JavaScript</li>
+    </ul>
+    <blockquote class="home-skills-quote">I'm a strategic, big-picture thinker. I'm at my best when I'm connecting the dots - bringing teams together, questioning assumptions, and designing experiences that actually make sense end-to-end. If that's what you need, then let's talk!</blockquote>
+  </div>
+</section>
+
+<!-- Work History -->
+<section class="home-experience" id="experience">
+  <div class="home-experience-inner">
+  <div class="home-experience-header" data-animate>
+    <div>
+      <p class="home-experience-eyebrow">Experience</p>
+      <h2 class="home-experience-heading">Work History</h2>
+    </div>
+    <a href="/assets/Landing page/Kathryne Mueller CV copy.pdf" download="Kathryne Mueller CV.pdf" class="home-about-btn home-about-btn--secondary">Download CV</a>
+  </div>
+  <div class="home-timeline">
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Health-Tech Start Up</span>
+        <span class="home-timeline-dates">Oct 2025 – Jan 2026</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Fractional Designer</h3>
+        
+        <p class="home-timeline-desc">Designing the core product and user experience for a pre-seed healthcare startup on a fractional basis, providing part-time, hands-on support in the early stages.</p>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Prototyping</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Mobile Design</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Data Visualisation</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Concept &amp; Strategy</span>
+          
+          
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--pink">Greenfield &amp; Startup</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Toyota Connected Europe</span>
+        <span class="home-timeline-dates">Apr 2024 – Oct 2024</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Senior Product Designer – Contract</h3>
+        
+        <ul class="home-timeline-bullets">
+          
+          <li>Lead UX for vehicle→home (energy management) features in the Toyota Europe app.</li>
+          
+          <li>Redesigned the full user journey and UI for Smart Charging; a complex feature integrating home charging and energy management, resulting in a more intuitive experience and stronger user engagement through testing and iteration.</li>
+          
+          <li>Led cross-functional workshops that bridged gaps between product, dev, and design, strengthening collaboration and building lasting trust among stakeholders.</li>
+          
+          <li>Ran user interviews and usability testing, delivering insight-led playback sessions to the teams.</li>
+          
+          <li>Mapped complete customer journeys with Service Design leads, capturing every touchpoint from frontend to backend, and developing a holistic view of Smart Charging and energy management within the full user and system landscape.</li>
+          
+        </ul>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">UI Design</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Mobile Design</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Prototyping</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Design Systems</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Journey Mapping</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Workshops</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Research</span>
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Shell</span>
+        <span class="home-timeline-dates">Jan 2022 – Nov 2023</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Senior Product Designer – Contract</h3>
+        
+        <ul class="home-timeline-bullets">
+          
+          <li>Together with Shell&#39;s innovation team in Germany, we created and pioneered a successful B2C proof-of-concept home energy management app for Shell Energy, intended to launch nationally. I took over as lead designer by project end, leading UX research, UI design, and feature strategy, with a focus on engagement and gamification.</li>
+          
+          <li>Led a 5-week mini design sprint for sonnen GmbH to deliver a proof of concept and testing approach for their first-ever dynamic pricing offering. This included a new landing page concept, integration proposals for the sonnen app, and a comprehensive research and design pack presented to senior stakeholders, providing a clear head start for the upcoming project.</li>
+          
+        </ul>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Mobile Design</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Design Systems</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Data Visualisation</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Workshops</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Testing</span>
+          
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--pink">Greenfield</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Clubhouse Studios</span>
+        <span class="home-timeline-dates">Jul – Aug 2020
+Jun – Oct 2021</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Freelance UX Consultant</h3>
+        
+        <p class="home-timeline-desc">Collaborated closely with the UX Director on UX content strategy for major adidas campaigns including Stella McCartney and a new inclusive sports bra line, while working alongside Clubhouse&#39;s creative team to assemble campaign asset packs to present back to the adidas teams.</p>
+        
+        <div class="home-timeline-pills">
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Concept &amp; Strategy</span>
+          
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">Digital Content</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">Marketing</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">UX Writing</span>
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Browns Fashion</span>
+        <span class="home-timeline-dates">Sep 2019 – Mar 2020</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Freelance UX Consultant</h3>
+        
+        <p class="home-timeline-desc">Delivered UX and UI designs for Browns&#39; website and mobile app, enhancing user journeys for luxury retail customers based on real feedback and analytics insights.</p>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Prototyping</span>
+          
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Testing</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">Optimisation</span>
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">The White Company</span>
+        <span class="home-timeline-dates">Aug 2018 – Mar 2019</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Freelance UX Designer</h3>
+        
+        <p class="home-timeline-desc">Lead UX for the multi-channel team delivering best-in-class user experiences for the website, notably a redesign of all legacy content into a new mobile-first responsive design following accessibility standards. This included all the self-service pages, help content, and a new store locator.</p>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Prototyping</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Design Systems</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Wireframes</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Prototypes</span>
+          
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">Optimisation</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">AB Testing</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">Web Analytics</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Testing</span>
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">EE</span>
+        <span class="home-timeline-dates">Mar 2017 – Jun 2018</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">UX Designer</h3>
+        
+        <ul class="home-timeline-bullets">
+          
+          <li>Lead UX designer for new products and propositions, where I designed a complex digital flow for the launch of the first connected wearable device.</li>
+          
+          <li>Introduced a cross-sell feature that drove a 250% increase in watch orders from customers purchasing an iPhone.</li>
+          
+        </ul>
+        
+        <div class="home-timeline-pills">
+          
+          <span class="home-timeline-pill home-timeline-pill--rose">Data Visualisation</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Workshops</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Research</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">User Testing</span>
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">EE</span>
+        <span class="home-timeline-dates">Aug 2015 – Jan 2016
+Jan 2016 – Mar 2017</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Digital Category Executive
+Digital Customer Experience Manager</h3>
+        
+        <ul class="home-timeline-bullets">
+          
+          <li>Promoted from executive to manager (individual contributor) within 6 months of starting the role.</li>
+          
+          <li>Notable work includes the content execution for the launch of iPhone 7 on EE&#39;s website, which at the time became the most successful digital iPhone launch, beating traffic targets by 21%.</li>
+          
+          <li>Employee recognition — Received two Managers Choice Awards and a People&#39;s Choice Award for my work in this role.</li>
+          
+        </ul>
+        
+        <div class="home-timeline-pills">
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Stakeholder Management</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Team Management</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Concept &amp; Strategy</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">Web Analytics</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">Content Management</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">UX Writing &amp; SEO</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">CMS</span>
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-timeline-entry" data-animate>
+      <div class="home-timeline-left">
+        <span class="home-timeline-company">Samsung Electronics UK</span>
+        <span class="home-timeline-dates">Aug 2013 – Jun 2014
+Jun 2014 – Jul 2015</span>
+      </div>
+      <div class="home-timeline-center">
+        <div class="home-timeline-dot"></div>
+        <div class="home-timeline-line"></div>
+      </div>
+      <div class="home-timeline-right">
+        <h3 class="home-timeline-role">Media Graduate
+Digital &amp; Media Campaign Executive</h3>
+        
+        <p class="home-timeline-desc">Managed relationships with large content partners, media and creative agencies to build unique digital content, driving brand engagement and awareness for new product launches and campaigns on the global website.</p>
+        
+        <div class="home-timeline-pills">
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--teal">Concept &amp; Strategy</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--blue">Budgets</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">Marketing</span>
+          
+          <span class="home-timeline-pill home-timeline-pill--amber">Digital Content</span>
+          
+          
+          <span class="home-timeline-pill home-timeline-pill--pink">Media Planning</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-top">
+      <div>
+        <p class="site-footer-name">Kathryne Mueller</p>
+        <p class="site-footer-tagline">Senior Digital Product Designer</p>
+      </div>
+      <div class="site-footer-contact">
+        <a href="mailto:kmuellerservices@gmail.com" class="site-footer-contact-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l10 6 10-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          kmuellerservices@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/kathryne-m/" target="_blank" class="site-footer-contact-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <p class="site-footer-text">© 2026 Kathryne Mueller. All rights reserved.</p>
+      <span class="site-footer-note">Vibe coded with Claude ✦</span>
+    </div>
+  </footer>
+
+  <!-- Contact overlay -->
+  <div class="contact-overlay" id="contact-overlay">
+    <div class="contact-modal">
+      <button class="contact-close" id="contact-close">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l16 16M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <h2 class="contact-heading">Looking forward to chat.</h2>
+      <p class="contact-subtext">Drop me a message and I'll be in touch.</p>
+      <form class="contact-form" id="contact-form" data-netlify="false">
+        <div class="contact-field">
+          <label class="contact-label" for="contact-name">Name</label>
+          <input class="contact-input" type="text" id="contact-name" name="name" placeholder="Your name" />
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="contact-email">Email</label>
+          <input class="contact-input" type="email" id="contact-email" name="email" placeholder="your@email.com" />
+        </div>
+        <div class="contact-field">
+          <label class="contact-label" for="contact-message">Message</label>
+          <textarea class="contact-input contact-textarea" id="contact-message" name="message" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="contact-submit" id="contact-submit">Send Message</button>
+        <p class="contact-error" id="contact-error" style="display:none; color:#c0392b; font-family:'DM Sans',sans-serif; font-size:14px; margin-top:12px;">Something went wrong. Please try again or email me directly.</p>
+      </form>
+      <div class="contact-success" id="contact-success" style="display:none; text-align:center; padding: 40px 0;">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;">
+          <circle cx="26" cy="26" r="26" fill="#22c55e"/>
+          <path d="M15 26l8 8 14-14" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="font-family:'DM Sans',sans-serif; font-size:20px; font-weight:500; color:#130061; margin:0;">Thanks for your message.</p>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-email-section">
+        <p class="contact-email-label">Or reach me directly</p>
+        <button class="contact-email-btn" id="contact-email-btn">
+          kmuellerservices@gmail.com
+          <svg class="contact-copy-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <span class="contact-copied" id="contact-copied">Copied!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/intro.js"></script>
+  <script src="/js/animate.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/tags.js"></script>
+  <script src="/js/cards-scroll.js"></script>
+  <script src="/js/contact.js"></script>
+  <script src="/js/hero-slideshow.js"></script>
+</body>
+</html>
