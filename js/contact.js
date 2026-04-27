@@ -31,3 +31,36 @@ emailBtn.addEventListener('click', () => {
     setTimeout(() => copiedMsg.classList.remove('is-visible'), 2000);
   });
 });
+
+const form = document.getElementById('contact-form');
+const submitBtn = document.getElementById('contact-submit');
+const errorMsg = document.getElementById('contact-error');
+const successPanel = document.getElementById('contact-success');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  errorMsg.style.display = 'none';
+
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch('https://formspree.io/f/mbdqezbe', {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' },
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      successPanel.style.display = 'block';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+  }
+});

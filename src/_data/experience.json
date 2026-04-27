@@ -4,7 +4,9 @@
     "dates": "Oct 2025 – Jan 2026",
     "role": "Fractional Designer",
     "description": "Designing the core product and user experience for a pre-seed healthcare startup on a fractional basis, providing part-time, hands-on support in the early stages.",
-    "activities": ["Concept & Strategy", "Prototyping", "Greenfield", "Startup", "Mobile Design"]
+    "uiActivities": ["Prototyping", "Mobile Design", "Data Visualisation"],
+    "peopleActivities": ["Concept & Strategy"],
+    "mediaActivities": ["Greenfield & Startup"]
   },
   {
     "company": "Toyota Connected Europe",
@@ -18,7 +20,9 @@
       "Ran user interviews and usability testing, delivering insight-led playback sessions to the teams.",
       "Mapped complete customer journeys with Service Design leads, capturing every touchpoint from frontend to backend, and developing a holistic view of Smart Charging and energy management within the full user and system landscape."
     ],
-    "activities": ["User Research", "Journey Mapping", "UI Design", "Workshops", "Mobile Design"]
+    "uiActivities": ["UI Design", "Mobile Design", "Prototyping", "Design Systems"],
+    "peopleActivities": ["Journey Mapping", "Workshops"],
+    "researchActivities": ["User Research"]
   },
   {
     "company": "Shell",
@@ -29,28 +33,34 @@
       "Together with Shell's innovation team in Germany, we created and pioneered a successful B2C proof-of-concept home energy management app for Shell Energy, intended to launch nationally. I took over as lead designer by project end, leading UX research, UI design, and feature strategy, with a focus on engagement and gamification.",
       "Led a 5-week mini design sprint for sonnen GmbH to deliver a proof of concept and testing approach for their first-ever dynamic pricing offering. This included a new landing page concept, integration proposals for the sonnen app, and a comprehensive research and design pack presented to senior stakeholders, providing a clear head start for the upcoming project."
     ],
-    "activities": ["Mobile Design", "Design Systems", "Data Visualisation", "User Testing"]
+    "uiActivities": ["Mobile Design", "Design Systems", "Data Visualisation"],
+    "peopleActivities": ["Workshops"],
+    "researchActivities": ["User Testing"],
+    "mediaActivities": ["Greenfield"]
   },
   {
     "company": "Clubhouse Studios",
     "dates": "Jul – Aug 2020\nJun – Oct 2021",
     "role": "Freelance UX Consultant",
     "description": "Collaborated closely with the UX Director on UX content strategy for major adidas campaigns including Stella McCartney and a new inclusive sports bra line, while working alongside Clubhouse's creative team to assemble campaign asset packs to present back to the adidas teams.",
-    "activities": []
+    "peopleActivities": ["Concept & Strategy"],
+    "marketingActivities": ["Digital Content", "Marketing", "UX Writing"]
   },
   {
     "company": "Browns Fashion",
     "dates": "Sep 2019 – Mar 2020",
     "role": "Freelance UX Consultant",
     "description": "Delivered UX and UI designs for Browns' website and mobile app, enhancing user journeys for luxury retail customers based on real feedback and analytics insights.",
-    "activities": []
+    "uiActivities": ["Prototyping"],
+    "researchActivities": ["User Testing", "Optimisation"]
   },
   {
     "company": "The White Company",
     "dates": "Aug 2018 – Mar 2019",
     "role": "Freelance UX Designer",
-    "description": "Lead UX for the multi-channel team delivering best-in-class user experiences for the website, notably a redesign of all legacy content into a new mobile-first responsive design following accessibility standards. These touchpoints include all the self-service pages, help content, and a new store locator.",
-    "activities": []
+    "description": "Lead UX for the multi-channel team delivering best-in-class user experiences for the website, notably a redesign of all legacy content into a new mobile-first responsive design following accessibility standards. This included all the self-service pages, help content, and a new store locator.",
+    "uiActivities": ["Prototyping", "Design Systems", "Wireframes", "Prototypes"],
+    "researchActivities": ["Optimisation", "AB Testing", "Web Analytics", "User Testing"]
   },
   {
     "company": "EE",
@@ -61,7 +71,9 @@
       "Lead UX designer for new products and propositions, where I designed a complex digital flow for the launch of the first connected wearable device.",
       "Introduced a cross-sell feature that drove a 250% increase in watch orders from customers purchasing an iPhone."
     ],
-    "activities": []
+    "uiActivities": ["Data Visualisation"],
+    "peopleActivities": ["Workshops"],
+    "researchActivities": ["User Research", "User Testing"]
   },
   {
     "company": "EE",
@@ -71,15 +83,20 @@
     "bullets": [
       "Promoted from executive to manager (individual contributor) within 6 months of starting the role.",
       "Notable work includes the content execution for the launch of iPhone 7 on EE's website, which at the time became the most successful digital iPhone launch, beating traffic targets by 21%.",
-      "Received two Managers Choice Awards and a People's Choice Award for employee recognition for this work."
+      "Employee recognition — Received two Managers Choice Awards and a People's Choice Award for my work in this role."
     ],
-    "activities": []
+    "peopleActivities": ["Stakeholder Management", "Team Management", "Concept & Strategy"],
+    "marketingActivities": ["Content Management", "UX Writing & SEO", "CMS"],
+    "researchActivities": ["Web Analytics"]
   },
   {
     "company": "Samsung Electronics UK",
     "dates": "Aug 2013 – Jun 2014\nJun 2014 – Jul 2015",
     "role": "Media Graduate\nDigital & Media Campaign Executive",
     "description": "Managed relationships with large content partners, media and creative agencies to build unique digital content, driving brand engagement and awareness for new product launches and campaigns on the global website.",
-    "activities": []
+    "peopleActivities": ["Concept & Strategy"],
+    "marketingActivities": ["Marketing", "Digital Content"],
+    "mediaActivities": ["Media Planning"],
+    "researchActivities": ["Budgets"]
   }
 ]

@@ -1,0 +1,118 @@
+<section id="key-visuals" class="setup-flow-section">
+  <div class="setup-flow-inner">
+    <p class="setup-flow-eyebrow">Smart Charging · Setup Flow</p>
+    <h2 class="setup-flow-heading">A step-by-step redesign</h2>
+
+    <div class="setup-flow-phones" id="setupFlowPhones">
+      <div class="setup-flow-step active" data-index="0">
+        <div class="setup-flow-phone-wrap">
+          <div class="setup-flow-phone-frame">
+            <div class="setup-flow-phone-screen">
+              <div class="setup-flow-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Onboarding 2 - dark.png" alt="Onboarding" />
+            </div>
+          </div>
+        </div>
+        <span class="setup-flow-label">Onboarding</span>
+      </div>
+      <div class="setup-flow-step" data-index="1">
+        <div class="setup-flow-phone-wrap">
+          <div class="setup-flow-phone-frame">
+            <div class="setup-flow-phone-screen">
+              <div class="setup-flow-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Step 1.png" alt="Location" />
+            </div>
+          </div>
+        </div>
+        <span class="setup-flow-label">Location</span>
+      </div>
+      <div class="setup-flow-step" data-index="2">
+        <div class="setup-flow-phone-wrap">
+          <div class="setup-flow-phone-frame">
+            <div class="setup-flow-phone-screen">
+              <div class="setup-flow-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Step 2.png" alt="Tariff" />
+            </div>
+          </div>
+        </div>
+        <span class="setup-flow-label">Tariff</span>
+      </div>
+      <div class="setup-flow-step" data-index="3">
+        <div class="setup-flow-phone-wrap">
+          <div class="setup-flow-phone-frame">
+            <div class="setup-flow-phone-screen">
+              <div class="setup-flow-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Step 4.png" alt="Schedule" />
+            </div>
+          </div>
+        </div>
+        <span class="setup-flow-label">Schedule</span>
+      </div>
+      <div class="setup-flow-step" data-index="4">
+        <div class="setup-flow-phone-wrap">
+          <div class="setup-flow-phone-frame">
+            <div class="setup-flow-phone-screen">
+              <div class="setup-flow-phone-island"></div>
+              <img src="/assets/Portfolio/Toyota/Setup overview-1.png" alt="Confirm" />
+            </div>
+          </div>
+        </div>
+        <span class="setup-flow-label">Confirm</span>
+      </div>
+    </div>
+
+    <div class="setup-flow-dots" id="setupFlowDots">
+      <button class="setup-flow-dot active" data-index="0" aria-label="Step 1"></button>
+      <button class="setup-flow-dot" data-index="1" aria-label="Step 2"></button>
+      <button class="setup-flow-dot" data-index="2" aria-label="Step 3"></button>
+      <button class="setup-flow-dot" data-index="3" aria-label="Step 4"></button>
+      <button class="setup-flow-dot" data-index="4" aria-label="Step 5"></button>
+    </div>
+
+    <div class="setup-flow-cards" id="setupFlowCards">
+      <div class="setup-flow-card active" data-index="0">
+        <span class="setup-flow-card-step">Step 01</span>
+        <h3 class="setup-flow-card-title">Welcome & benefits</h3>
+        <p class="setup-flow-card-body">Users are introduced to Smart Charging with clear, jargon-free language focused on what matters most — cost savings, charge level, and control. The value proposition is visible before any commitment is required.</p>
+      </div>
+      <div class="setup-flow-card" data-index="1">
+        <span class="setup-flow-card-step">Step 02</span>
+        <h3 class="setup-flow-card-title">Set your location</h3>
+        <p class="setup-flow-card-body">Users confirm their home charging location so the app can apply the right tariff rates and schedules. A simple map confirmation replaces the previous buried settings flow.</p>
+      </div>
+      <div class="setup-flow-card" data-index="2">
+        <span class="setup-flow-card-step">Step 03</span>
+        <h3 class="setup-flow-card-title">Choose your tariff</h3>
+        <p class="setup-flow-card-body">The app presents the user's available energy tariff options in plain language, helping them understand how off-peak rates translate into real savings.</p>
+      </div>
+      <div class="setup-flow-card" data-index="3">
+        <span class="setup-flow-card-step">Step 04</span>
+        <h3 class="setup-flow-card-title">Set a charging schedule</h3>
+        <p class="setup-flow-card-body">Users set their preferred charging window and departure time. The design clearly surfaces the connection between schedule, tariff, and charge level so users feel in control.</p>
+      </div>
+      <div class="setup-flow-card" data-index="4">
+        <span class="setup-flow-card-step">Step 05</span>
+        <h3 class="setup-flow-card-title">Review & confirm</h3>
+        <p class="setup-flow-card-body">A summary screen gives users confidence before activating Smart Charging. All settings are shown together so there are no surprises — and no more unexpected modal interruptions.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const steps = document.querySelectorAll('.setup-flow-step');
+  const cards = document.querySelectorAll('.setup-flow-card');
+  const dots  = document.querySelectorAll('.setup-flow-dot');
+
+  function activate(index) {
+    steps.forEach((s, i) => s.classList.toggle('active', i === index));
+    cards.forEach((c, i) => c.classList.toggle('active', i === index));
+    dots.forEach((d, i)  => d.classList.toggle('active', i === index));
+  }
+
+  steps.forEach(s => s.addEventListener('click', () => activate(+s.dataset.index)));
+  dots.forEach(d  => d.addEventListener('click', () => activate(+d.dataset.index)));
+})();
+</script>

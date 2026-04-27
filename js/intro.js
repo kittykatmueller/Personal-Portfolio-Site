@@ -13,11 +13,11 @@
 
   // After SVG draw (10s) + short pause, fade out
   setTimeout(function () {
-    overlay.style.transition = 'opacity 1s ease';
+    overlay.style.transition = 'opacity 0.5s ease';
     overlay.style.opacity = '0';
     setTimeout(function () {
       overlay.remove();
       document.body.style.overflow = '';
-    }, 1000);
-  }, 6800);
+    }, 500);
+  }, 1900);
 })();

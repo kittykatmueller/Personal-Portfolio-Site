@@ -1,99 +1,405 @@
 ---
 layout: layouts/case-study.njk
-title: "Shell – Case Study"
-heroEyebrow: "Shell"
-heroTitle: "Case Study"
-heroTitleItalic: "title"
-heroSub: "2024"
-heroImage: ""
-heroImageAlt: ""
+title: "Shell Energy – Helping households see, understand, and improve their energy usage"
+heroEyebrow: "Shell Energy (2022)"
+heroTitle: "Energy insights."
+heroTitleItalic: "Real saving potential."
+heroSub: "Leading the end-to-end design of Shell Energy's first mobile app, helping customers understand and manage their home energy usage."
+heroImage: "/assets/Portfolio/Shell/energy assistant.png"
+heroKeyVisual1: "/assets/Portfolio/Shell/energy assistant finals/EA_Report-1 1.png"
+heroKeyVisual2: "/assets/Portfolio/Shell/energy assistant finals/EA_Report-2 1.png"
+heroKeyVisual3: "/assets/Portfolio/Shell/energy assistant finals/EA_Report-3 1.png"
+heroKeyVisual4: "/assets/Portfolio/Shell/energy assistant finals/EA_Report-4 1.png"
+heroImageAlt: "Shell Energy Assistant app screens"
+heroClass: "hero--shell"
+hideShowcase: true
+nextProjectUrl: "/sonnen/"
+nextProjectTitle: "A smarter way to own your energy"
+nextProjectDesc: "Designing the experience for Sonnen's home battery ecosystem, helping users take control of their energy independence."
+nextProjectImage: "/assets/Portfolio/sonnen/sonnen laptop.png"
 navItems:
   - id: context
     label: "01 Context"
   - id: user-research
-    label: "02 User Research"
+    label: "02 Research"
+  - id: product-vision
+    label: "03 Product Vision"
   - id: challenges
-    label: "03 Challenges"
-  - id: competitors
-    label: "04 Looking to Competitors"
-  - id: solutions
-    label: "05 Solutions"
+    label: "04 Technical Requirements"
+  - id: feature-scoping
+    label: "05 Feature Scoping"
+  - id: user-testing
+    label: "06 Design & Iteration"
   - id: outcomes
-    label: "06 Outcomes"
+    label: "07 Outcomes"
+  - id: collaboration
+    label: "08 Collaboration"
+  - id: key-design-decisions
+    label: "Key Design Decisions"
 ---
 
 <!-- 01 Context -->
 <section id="context" class="cs-section">
   <div class="section-eyebrow"><span>01 Context</span></div>
-  <h2 class="section-heading">Setting the Scene</h2>
+  <h2 class="section-heading">Background</h2>
   <div class="section-cards">
+
     <div class="card">
-      <span class="card-label">My Role</span>
-      <p>Placeholder content.</p>
+      <span class="card-label">The Energy Market</span>
+      <p>In 2022, the consumer energy space was becoming turbulent and customers were suddenly exposed to much higher bills. For this reason, Shell's users wanted more insight, more control, and extra guidance on how to use energy more efficiently at home so they can reduce their bills.</p>
+      <span class="card-section-label">My Role</span>
+      <p>I joined as one of three Product Designers, working across the full design spectrum, from wireframes and prototyping to user testing and stakeholder workshops. Midway through the project I stepped up as Lead, taking ownership of UX research, UI design, and feature strategy, with a focus on engagement and gamification.</p>
     </div>
+
     <div class="card">
-      <span class="card-label">Business Objectives</span>
-      <p>Placeholder content.</p>
+      <span class="card-label">The Brief</span>
+      <p>Create an attractive and easy to use app, that would resonate with consumers and offer them an engaging way to manage their household energy usage, beyond just reviewing their monthly bills.</p>
+      <span class="card-section-label">Objectives</span>
+      <ul class="checklist">
+        <li>
+          <span class="check-icon">
+            <svg viewBox="0 0 31 31" overflow="visible"><path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/></svg>
+            <svg class="tick" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Reduction of high bill calls and churn due to improved customer experience
+        </li>
+        <li>
+          <span class="check-icon">
+            <svg viewBox="0 0 31 31" overflow="visible"><path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/></svg>
+            <svg class="tick" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Targeting of customers and customisation of offers based on real data
+        </li>
+        <li>
+          <span class="check-icon">
+            <svg viewBox="0 0 31 31" overflow="visible"><path d="M 15.5 0 C 24.06 0 31 6.94 31 15.5 C 31 24.06 24.06 31 15.5 31 C 6.94 31 0 24.06 0 15.5 C 0 6.94 6.94 0 15.5 0 Z" fill="rgba(250, 231, 131, 0.2)" stroke="rgb(250, 231, 131)" stroke-width="1.5"/></svg>
+            <svg class="tick" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Transparency and control of energy consumption and costs
+        </li>
+      </ul>
     </div>
+
+  </div>
+  <div class="pilot-box" style="margin-top: 66px; max-width: 60%;">
+    <span class="pilot-box-label">🇩🇪 German Market Pilot</span>
+    <p>This project was developed in-house at Shell Energy and piloted in the German market with a group of 100 customers. The app was built fully in German and tested across multiple locations, which required close collaboration with local teams and hands-on involvement in user research and testing.</p>
   </div>
 </section>
 
 <!-- 02 User Research -->
 <section id="user-research" class="cs-section">
-  <div class="section-eyebrow"><span>02 User Research</span></div>
-  <h2 class="section-heading">Understanding Users</h2>
-  <div class="section-row">
+  <div class="section-eyebrow"><span>02 Research</span></div>
+  <h2 class="section-heading">Understanding the consumer energy landscape</h2>
+  <div class="section-row" style="align-items: flex-start; gap: 40px;">
     <div class="section-col">
-      <p class="section-body">Placeholder content.</p>
+      <p class="section-body">A large amount of research went into what the solution should be for the 'energy customer of the future'. This research was conducted by the research and innovation team in Germany prior to my joining the team for this project. Some of the key insights that fed into the product vision are outlined below.</p>
     </div>
-    <div class="img-placeholder"></div>
+    <div class="section-img-wrap section-img-wrap--auto">
+      <img src="/assets/Portfolio/Shell/Concepts.png" alt="Concepts" class="section-img" style="min-height: unset; height: auto;" />
+    </div>
+  </div>
+  <div class="insight-cards insight-cards--row">
+    <div class="insight-card">
+      <p class="insight-quote">"Consumers have higher expectations from their energy provider - wanting more personalised solutions and simple end-to-end experiences for more engagement."</p>
+      <span class="insight-source">— Internal Insight</span>
+    </div>
+    <div class="insight-card">
+      <p class="insight-quote">"Users have gone from more 'passive consumption', to having a growing interest and more active participation in the adoption of new energy solutions."</p>
+      <span class="insight-source">— Internal Insight</span>
+    </div>
+    <div class="insight-card">
+      <p class="insight-quote">"A digital first approach is the preferred way by consumers to receive their consumption information."</p>
+      <span class="insight-source">— Internal Insight</span>
+    </div>
   </div>
 </section>
 
-<!-- 03 Challenges -->
+<!-- 03 Product Vision -->
+<section id="product-vision" class="cs-section">
+  <div class="section-eyebrow"><span>The Product Vision</span></div>
+  <h2 class="section-heading">A New Consumer App for Shell Energy</h2>
+  <div class="proposition-card">
+    <div class="proposition-left">
+      <p class="proposition-card-header">The <em>Shell Energy Assistant</em></p>
+      <p class="proposition-tagline">See your energy consumption in a new light.</p>
+      <p class="proposition-tagline" style="margin-top: 12px;">Discover your energy potential and track your impact.</p>
+    </div>
+    <div class="proposition-phone">
+      <svg viewBox="0 0 200 380" fill="none" xmlns="http://www.w3.org/2000/svg" class="proposition-phone-svg">
+        <!-- Phone shell -->
+        <rect x="10" y="10" width="180" height="360" rx="28" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+        <rect x="16" y="16" width="168" height="348" rx="23" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <!-- Dynamic island -->
+        <rect x="72" y="26" width="56" height="16" rx="8" fill="rgba(255,255,255,0.15)"/>
+        <!-- Status bar dots -->
+        <circle cx="40" cy="50" r="3" fill="rgba(255,255,255,0.2)"/>
+        <rect x="50" y="48" width="40" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="150" y="48" width="20" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <!-- Header label -->
+        <rect x="30" y="66" width="60" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
+        <rect x="30" y="78" width="100" height="10" rx="3" fill="rgba(255,255,255,0.3)"/>
+        <!-- Energy donut chart -->
+        <circle cx="100" cy="148" r="44" stroke="rgba(255,255,255,0.1)" stroke-width="14"/>
+        <circle cx="100" cy="148" r="44" stroke="#f0c040" stroke-width="14" stroke-dasharray="165 111" stroke-dashoffset="27" stroke-linecap="round"/>
+        <rect x="82" y="142" width="36" height="8" rx="3" fill="rgba(255,255,255,0.35)"/>
+        <rect x="88" y="154" width="24" height="5" rx="2" fill="rgba(255,255,255,0.18)"/>
+        <!-- Appliance rows -->
+        <rect x="30" y="210" width="140" height="1" fill="rgba(255,255,255,0.08)"/>
+        <circle cx="44" cy="228" r="10" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <rect x="62" y="223" width="55" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="62" y="232" width="35" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="148" y="224" width="22" height="6" rx="3" fill="rgba(240,192,64,0.35)"/>
+        <rect x="30" y="250" width="140" height="1" fill="rgba(255,255,255,0.08)"/>
+        <circle cx="44" cy="268" r="10" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <rect x="62" y="263" width="45" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="62" y="272" width="30" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="148" y="264" width="22" height="6" rx="3" fill="rgba(240,192,64,0.2)"/>
+        <rect x="30" y="290" width="140" height="1" fill="rgba(255,255,255,0.08)"/>
+        <circle cx="44" cy="308" r="10" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <rect x="62" y="303" width="50" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="62" y="312" width="28" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="148" y="304" width="22" height="6" rx="3" fill="rgba(240,192,64,0.15)"/>
+        <!-- Bottom nav bar -->
+        <rect x="16" y="334" width="168" height="30" rx="0" fill="rgba(255,255,255,0.05)"/>
+        <rect x="16" y="334" width="168" height="1" fill="rgba(255,255,255,0.08)"/>
+        <rect x="40" y="342" width="24" height="14" rx="4" fill="rgba(255,255,255,0.15)"/>
+        <rect x="88" y="344" width="24" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <rect x="88" y="352" width="16" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <rect x="144" y="344" width="24" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <rect x="144" y="352" width="16" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Challenges -->
 <section id="challenges" class="cs-section">
-  <div class="section-eyebrow"><span>03 Challenges</span></div>
-  <h2 class="section-heading">Challenges</h2>
+  <div class="section-eyebrow"><span>Technical Requirements</span></div>
+  <h2 class="section-heading">Collecting Consumption Data From Users</h2>
   <div class="section-row">
     <div class="section-col">
-      <p class="section-body">Placeholder content.</p>
+      <p class="section-body">In order to collect the consumption data from consumers, we needed to work very closely with a third party provider called Net2Grid. They were able to provide load-disaggregation technology and accompanying hardware. The really interesting part was that the household consumption data was not only the overall usage, but also broken down by individual appliance usage. Together we ran many workshops to align on technical capabilities, define the user setup flow, and understand how physical hardware installation in the home would connect to the digital experience.</p>
+      <div class="section-img-wrap section-img-wrap--auto" style="margin-top: 24px;">
+        <img src="/assets/Portfolio/Shell/Setup 1.png" alt="Setup" class="section-img" style="min-height: unset; height: auto;" />
+      </div>
+      <div class="section-img-wrap section-img-wrap--auto" style="margin-top: 20px;">
+        <img src="/assets/Portfolio/Shell/Setup and Installation.png" alt="Setup and Installation" class="section-img" style="min-height: unset; height: auto;" />
+      </div>
+      <p class="img-caption" style="text-align: left; margin-top: 8px;">The UX flow for the hardware setup on the app</p>
     </div>
-    <div class="img-placeholder"></div>
+  </div>
+  <div class="section-row cs-subsection">
+    <div class="section-col">
+      <h3 class="subsection-heading">The Challenging Bit</h3>
+      <p class="section-body">How do you translate highly technical, granular data into something that feels simple, understandable, and useful for everyday consumers, without overwhelming them?</p>
+    </div>
   </div>
 </section>
 
-<!-- 04 Competitors -->
-<section id="competitors" class="cs-section">
-  <div class="section-eyebrow"><span>04 Looking to Competitors</span></div>
-  <h2 class="section-heading">Learning from Competitors</h2>
+<!-- 05 Feature Scoping -->
+<section id="feature-scoping" class="cs-section">
+  <div class="section-eyebrow"><span>Feature Scoping</span></div>
+  <h2 class="section-heading">The Four Key Features</h2>
   <div class="section-row">
     <div class="section-col">
-      <p class="section-body">Placeholder content.</p>
+      <p class="section-body">There are four key features for the app, each of these we spent approx a quarter of a year testing and refining designs, and gradually releasing them to our users.</p>
     </div>
-    <div class="img-placeholder"></div>
+  </div>
+  <div class="feature-rows-card">
+  <div class="feature-rows">
+    <div class="feature-row">
+      <span class="feature-row-number">💡</span>
+      <h4 class="feature-row-title">Energy Insights</h4>
+      <p class="feature-row-body">Real-time household energy data, both total and appliance-level, to provide transparency, trust, and control.</p>
+    </div>
+    <div class="feature-row">
+      <span class="feature-row-number">🎯</span>
+      <h4 class="feature-row-title">Product Recommendations & Try-Before-You-Buy</h4>
+      <p class="feature-row-body">A simulation engine using real consumption data, allowing users to explore products like solar panels before committing to major purchases.</p>
+    </div>
+    <div class="feature-row">
+      <span class="feature-row-number">⭐</span>
+      <h4 class="feature-row-title">Challenges & Rewards</h4>
+      <p class="feature-row-body">An engagement layer designed to encourage continued app usage and recognise positive behaviour change.</p>
+    </div>
+    <div class="feature-row feature-row--muted">
+      <span class="feature-row-number">🏠</span>
+      <h4 class="feature-row-title">Advanced Smart Home Controls</h4>
+      <p class="feature-row-body">Explored conceptually but ultimately out of scope.</p>
+    </div>
+  </div>
   </div>
 </section>
 
-<!-- 05 Solutions -->
-<section id="solutions" class="cs-section">
-  <div class="section-eyebrow"><span>05 Solutions</span></div>
-  <h2 class="section-heading">Solutions</h2>
+
+<!-- 06 Design & Iteration -->
+<section id="user-testing" class="cs-section">
+  <div class="section-eyebrow"><span>Design & Iteration</span></div>
+  <!-- Initial Research -->
+  <div class="section-row cs-subsection" style="margin-top: 0;">
+    <div class="section-col">
+      <h3 class="subsection-heading">Initial Research</h3>
+      <p class="section-body">Before I started with this project team, a research and innovation team located in Shell Energy Germany had already conducted six months' worth of research and exploration to arrive at the concept of developing a consumer-facing app to achieve the business objectives of this initiative.</p>
+      <p class="section-body">Some of this work included building out the personas. We needed to make sure that the app appealed across the spectrum of these groups as some of the demographics were very different in terms of age and interests.</p>
+    </div>
+  </div>
+  <div class="section-row" style="margin-top: 32px;">
+    <div class="section-col">
+      <div class="section-img-wrap section-img-wrap--auto" style="box-shadow: 0 4px 24px rgba(0,0,0,0.1);">
+        <img src="/assets/Portfolio/Shell/personas.png" alt="Personas" class="section-img" style="min-height: unset; height: auto;" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Testing the first PoC -->
+  <div class="section-row cs-subsection">
+    <div class="section-col">
+      <h3 class="subsection-heading">Testing and Iterating</h3>
+      <p class="section-body">The screens iterated and evolved over the course of testing. Below shows the evolvement of the dashboard screen over time, the changes made were due to insight and direct user feedback.</p>
+    </div>
+  </div>
   <div class="section-row">
     <div class="section-col">
-      <p class="section-body">Placeholder content.</p>
+      <div class="iteration-grid" style="margin-top: 52px;">
+        <div class="iteration-grid-item">
+          <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <img src="/assets/Portfolio/Shell/early concept.png" alt="Early concept" style="width: 100%; height: 530px; object-fit: cover; object-position: top; display: block;" />
+          </div>
+          <p class="img-caption" style="text-align: center; margin-top: 8px;">Early Concept</p>
+        </div>
+        <div class="iteration-grid-item">
+          <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <img src="/assets/Portfolio/Shell/Itertaion 2.png" alt="Iteration 2" style="width: 100%; height: 530px; object-fit: cover; object-position: top; display: block;" />
+          </div>
+          <p class="img-caption" style="text-align: center; margin-top: 8px;">Iteration 1</p>
+        </div>
+        <div class="iteration-grid-item">
+          <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <img src="/assets/Portfolio/Shell/Iteration 3.png" alt="Iteration 3" style="width: 100%; height: 530px; object-fit: cover; object-position: top; display: block;" />
+          </div>
+          <p class="img-caption" style="text-align: center; margin-top: 8px;">Iteration 2</p>
+        </div>
+        <div class="iteration-grid-item">
+          <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <img src="/assets/Portfolio/Shell/final.png" alt="Final design" style="width: 100%; height: 530px; object-fit: cover; object-position: top; display: block;" />
+          </div>
+          <p class="img-caption" style="text-align: center; margin-top: 8px;">Final</p>
+        </div>
+      </div>
     </div>
-    <div class="img-placeholder"></div>
   </div>
+  <div class="section-row cs-subsection">
+    <div class="section-col">
+      <p class="section-body">User testing was conducted almost weekly by the design team. We set up qualitative interviews both moderated and unmoderated, and managed to validate most features and designs thoroughly before going any further into development. Some examples of our testing practices can be seen below.</p>
+      <p class="section-body">Testing outcomes showed interesting results. We would find different users would have certain preferences to how they want to view data, for example seeing their usage in kWh vs Euros. We also had an important job to do in terms of making sure that complex data was understood graphically with simple bar graphs and donut charts to make this more digestible.</p>
+    </div>
+  </div>
+
+  <!-- Gamification and App Engagement -->
+  <div class="section-row cs-subsection">
+    <div class="section-col">
+      <h3 class="subsection-heading">Evolving the App Features</h3>
+      <p class="section-body">By the time we had finished iterating on the core features (the load disaggregation and display of consumption data) we were ready to start working on the other major features, including a solar PV virtual generator, and an engagement, gamification piece to keep users highly engaged with the app. I was the design lead by this point so made some key decisions to move things forward.</p>
+    </div>
+  </div>
+  <div style="margin-top: 24px;">
+    <img src="/assets/Portfolio/Shell/gamification.png" alt="Gamification" style="width: 100%; height: auto; display: block; border-radius: 12px;" />
+  </div>
+  <div class="app-screens-wrap">
+    <div class="app-screen-item">
+      <img src="/assets/Portfolio/Shell/power hour.png" alt="Power Hour" style="width: 100%; height: auto; display: block;" />
+    </div>
+    <div class="app-screen-item">
+      <img src="/assets/Portfolio/Shell/my solar.png" alt="My Solar" style="width: 100%; height: auto; display: block;" />
+    </div>
+  </div>
+
 </section>
 
-<!-- 06 Outcomes -->
+<!-- 07 Outcomes -->
 <section id="outcomes" class="cs-section">
-  <div class="section-eyebrow"><span>06 Outcomes</span></div>
-  <h2 class="section-heading">Outcomes</h2>
+  <div class="section-eyebrow"><span>07 Outcomes</span></div>
+  <h2 class="section-heading">Outcome & impact</h2>
+
+  <p class="section-body">The Shell Energy Assistant was piloted with around 50 German customers over the course of a year. During this time, the app received consistently positive feedback for its usability, clarity, and depth of insight.</p>
+  <p class="section-body" style="margin-top: 16px;">Users reported that the app helped them better understand where energy was being used in their home, identify inefficiencies, and make informed decisions to improve energy efficiency. One customer even replaced an old fridge after realising how much it was costing them each month.</p>
+
+  <div style="margin-top: 32px; background: linear-gradient(135deg, #fafaff 0%, #f2f2f9 100%); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden;">
+    <img src="/assets/Portfolio/Shell/testing2.png" alt="User testing 2" style="width: 100%; height: auto; display: block;" />
+  </div>
+
+  <p class="section-body" style="margin-top: 32px;">The app was later showcased at the Greentech Festival in Berlin. Although it was not launched to the wider market due to the closure of the Shell Energy business in the planned regions, the project delivered strong validation of the concept and valuable learnings for future consumer energy products.</p>
+
+  <div class="greentech-row" style="margin-top: 32px; display: flex; gap: 16px; align-items: stretch;">
+    <div style="flex: 1 1 50%; overflow: hidden; border-radius: 12px; min-width: 0;">
+      <img src="/assets/Portfolio/Shell/greentech festival.webp" alt="Greentech Festival Berlin" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px;" />
+    </div>
+    <div style="flex: 1 1 50%; overflow: hidden; border-radius: 12px; background: linear-gradient(135deg, #fafaff 0%, #f2f2f9 100%); display: flex; align-items: center; justify-content: center; padding: 32px; min-width: 0;">
+      <img src="/assets/Portfolio/Shell/festival logo.png" alt="Greentech Festival Logo" style="max-width: 100%; height: auto; display: block;" />
+    </div>
+  </div>
+  <p class="img-caption" style="text-align: left; margin-top: 8px;">Shell Energy Assistant showcased at Greentech Festival, Berlin</p>
+
+</section>
+
+<!-- 08 Collaboration -->
+<section id="collaboration" class="cs-section">
+  <div class="section-eyebrow"><span>Collaboration</span></div>
+  <h2 class="section-heading">Collaborating for success</h2>
   <div class="section-row">
     <div class="section-col">
-      <p class="section-body">Placeholder content.</p>
+      <p class="section-body">As well as testing, we frequently conducted workshops with the wider teams, to ensure that features were scoped from a functionality as well as technical feasibility perspective from the very beginning. This ensured we didn't go off on a tangent and kept the team working closely together. We also found engineer and product inputs and ideas in the early concept stage to be invaluable and promoted a collaborative working practice in the team with shared Figjam files, and co-working spaces.</p>
     </div>
-    <div class="img-placeholder"></div>
+  </div>
+  <div class="img-row-pair" style="display: flex; gap: 16px; margin-top: 44px;">
+    <div class="section-img-wrap" style="flex: 1;">
+      <img src="/assets/Portfolio/Shell/collaborating .webp" alt="Collaboration" class="section-img" style="border-radius: 12px;" />
+    </div>
+    <div class="section-img-wrap" style="flex: 1;">
+      <img src="/assets/Portfolio/Shell/teamphoto.webp" alt="Team photo" class="section-img" style="border-radius: 12px;" />
+    </div>
+  </div>
+</section>
+
+<!-- Key Design Decisions -->
+<section id="key-design-decisions" class="cs-section">
+  <div class="section-eyebrow"><span>Key Design Decisions</span></div>
+  <h2 class="section-heading">The Moments That Mattered</h2>
+  <div class="section-row">
+    <div class="section-col">
+      <ul class="cs-bullet-list">
+        <li>
+          <div>
+            <strong>A late curveball: data was delayed by 24 hours</strong>
+            <span>We discovered disaggregation data wasn't available in real-time; users would only see it the next day. A significant amount of design work had to be reshaped around this constraint, designing for what data we had and when we had it.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Simplicity over data density</strong>
+            <span>We had loads of data, but how much of it was actually useful to our users? Translating highly technical, granular consumption data into simple charts and graphs so everyday consumers could understand it without being overwhelmed was a core task, and one we iterated on every week through user testing to get right.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Gamification needed to earn its place</strong>
+            <span>We did a deep dive to understand what engagement techniques genuinely served user needs, rather than adding an unnecessary layer. We found users wanted to be a better version of themselves and felt good about helping the environment. Without monetary rewards being available (the preferred choice), environmental impact and personal progress turned out to be the next best motivator.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Pioneering a new design system</strong>
+            <span>We had to align closely with Shell's existing design teams whilst making our own decisions for a new Shell Energy digital platform. It meant navigating established rules whilst laying down new ones.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Success was a working product in real hands</strong>
+            <span>A demonstrable, enjoyable product used by real customers was the measure of success. A wider rollout would have provided the real analytics needed to go further, but what we built proved the concept worked.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
