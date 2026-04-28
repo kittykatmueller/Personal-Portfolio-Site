@@ -2280,8 +2280,9 @@ body {
     padding: 48px 28px 40px;
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-    max-height: 92vh;
+    max-height: 90dvh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .contact-overlay.is-open .contact-modal {
     transform: translateY(0);
