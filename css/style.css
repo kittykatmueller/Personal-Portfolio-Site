@@ -1524,7 +1524,7 @@ html, body {
   }
 
   .home-heading {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.5;
   }
 
@@ -1541,9 +1541,12 @@ html, body {
     width: 100%;
   }
 
+  .home-card-demo {
+    height: 240px;
+  }
+
   .home-card-nda {
-    top: 240px;
-    bottom: auto;
+    top: 200px;
     right: 16px;
   }
 
@@ -2277,6 +2280,8 @@ body {
     padding: 48px 28px 40px;
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    max-height: 92vh;
+    overflow-y: auto;
   }
   .contact-overlay.is-open .contact-modal {
     transform: translateY(0);
