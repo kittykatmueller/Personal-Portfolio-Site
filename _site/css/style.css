@@ -4025,6 +4025,17 @@ body {
   .pilot-box {
     max-width: 100% !important;
   }
+
+  .nda-preview-row {
+    flex-direction: column !important;
+  }
+
+  .nda-preview-text,
+  .nda-preview-image {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 .pilot-box-label {
