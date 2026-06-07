@@ -976,6 +976,16 @@ html, body {
   gap: 14px;
 }
 
+.home-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-timeline-body {
+  display: contents;
+}
+
 .home-timeline-role {
   font-family: 'Merriweather', serif;
   font-size: 20px;
@@ -1447,7 +1457,8 @@ html, body {
   }
 
   .home-timeline-entry {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding-left: 36px;
     padding-bottom: 40px;
@@ -1463,7 +1474,7 @@ html, body {
     content: '';
     position: absolute;
     left: -9px;
-    top: 0;
+    top: 20px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -1475,7 +1486,7 @@ html, body {
     content: '';
     position: absolute;
     left: -4px;
-    top: 5px;
+    top: 25px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -1483,7 +1494,7 @@ html, body {
   }
 
   .home-timeline-entry:first-child {
-    border-image: linear-gradient(to bottom, transparent 8px, #d0cce8 8px) 1;
+    border-image: linear-gradient(to bottom, transparent 28px, #d0cce8 28px) 1;
   }
 
   .home-timeline-left {
@@ -1492,12 +1503,17 @@ html, body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 0;
-    margin-bottom: 2px;
+    gap: 8px;
+    margin-bottom: 0;
+    order: 1;
   }
 
   .home-timeline-dates {
-    margin-bottom: 22px;
+    margin-bottom: 0;
+  }
+
+  .home-timeline-role {
+    margin: 0;
   }
 
   .home-timeline-center {
@@ -1506,6 +1522,31 @@ html, body {
 
   .home-timeline-right {
     padding: 0;
+    order: 0;
+    border-top: 1px solid rgba(19, 0, 97, 0.12);
+    padding-top: 20px;
+  }
+
+  .home-timeline-entry {
+    gap: 8px;
+    cursor: pointer;
+    padding-top: 0;
+  }
+
+  .home-timeline-entry:last-child .home-timeline-left {
+    border-bottom: 1px solid rgba(19, 0, 97, 0.12);
+    padding-bottom: 20px;
+  }
+
+  .home-timeline-body {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .home-timeline-entry.is-open .home-timeline-body {
+    max-height: 600px;
   }
 }
 
@@ -1650,7 +1691,8 @@ html, body {
   }
 
   .home-timeline-entry {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding-left: 32px;
     padding-bottom: 32px;
@@ -1666,7 +1708,7 @@ html, body {
     content: '';
     position: absolute;
     left: -9px;
-    top: 0;
+    top: 20px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -1678,7 +1720,7 @@ html, body {
     content: '';
     position: absolute;
     left: -4px;
-    top: 5px;
+    top: 25px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -1686,7 +1728,7 @@ html, body {
   }
 
   .home-timeline-entry:first-child {
-    border-image: linear-gradient(to bottom, transparent 8px, #d0cce8 8px) 1;
+    border-image: linear-gradient(to bottom, transparent 28px, #d0cce8 28px) 1;
   }
 
   .home-timeline-left {
@@ -1695,12 +1737,17 @@ html, body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 0;
-    margin-bottom: 2px;
+    gap: 8px;
+    margin-bottom: 0;
+    order: 1;
   }
 
   .home-timeline-dates {
-    margin-bottom: 22px;
+    margin-bottom: 0;
+  }
+
+  .home-timeline-role {
+    margin: 0;
   }
 
   .home-timeline-center {
@@ -1709,6 +1756,7 @@ html, body {
 
   .home-timeline-right {
     padding: 0;
+    order: 0;
   }
 
   .home-timeline-entry[data-animate] {
@@ -2767,9 +2815,10 @@ body {
 }
 
 /* ── Brand hero variants ── */
-.hero--toyota,
 .hero--sonnen,
 .hero--shell  { background: linear-gradient(135deg, #fafaff 0%, #f2f2f9 100%); }
+
+.hero--toyota { background: #0d0b28; }
 
 .hero--sonnen { min-height: 600px; }
 
@@ -2783,31 +2832,31 @@ body {
   margin-bottom: calc(-904px * 0.51);
 }
 
-.hero--toyota .hero-eyebrow,
+.hero--toyota .hero-eyebrow { color: #ff4d6d; opacity: 1; }
 .hero--sonnen .hero-eyebrow,
 .hero--shell  .hero-eyebrow { color: #ff4d6d; opacity: 1; }
 
-.hero--toyota .hero-heading,
+.hero--toyota .hero-heading { color: #ffffff; }
 .hero--sonnen .hero-heading,
 .hero--shell  .hero-heading { color: #130061; }
 
-.hero--toyota .hero-stats,
+.hero--toyota .hero-stats { border-top-color: rgba(255, 255, 255, 0.15); }
 .hero--sonnen .hero-stats,
 .hero--shell  .hero-stats { border-top-color: rgba(19, 0, 97, 0.1); }
 
-.hero--toyota .hero-stat-value,
+.hero--toyota .hero-stat-value { color: #ffffff; }
 .hero--sonnen .hero-stat-value,
 .hero--shell  .hero-stat-value { color: #130061; }
 
-.hero--toyota .hero-heading em,
+.hero--toyota .hero-heading em { color: #ff4d6d; font-style: italic; }
 .hero--sonnen .hero-heading em,
 .hero--shell  .hero-heading em { color: #130061; font-style: italic; }
 
-.hero--toyota .hero-sub,
+.hero--toyota .hero-sub { color: rgba(255,255,255,0.75); font-size: 18px; line-height: 1.8; }
 .hero--sonnen .hero-sub,
 .hero--shell  .hero-sub { color: #555; font-size: 18px; line-height: 1.8; }
 
-.hero--toyota .hero-date,
+.hero--toyota .hero-date { color: #ff4d6d; opacity: 0.8; }
 .hero--sonnen .hero-date,
 .hero--shell  .hero-date { color: #ff4d6d; opacity: 0.8; }
 
