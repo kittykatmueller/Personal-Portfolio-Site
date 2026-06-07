@@ -976,6 +976,16 @@ html, body {
   gap: 14px;
 }
 
+.home-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-timeline-body {
+  display: contents;
+}
+
 .home-timeline-role {
   font-family: 'Merriweather', serif;
   font-size: 20px;
@@ -1447,7 +1457,8 @@ html, body {
   }
 
   .home-timeline-entry {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding-left: 36px;
     padding-bottom: 40px;
@@ -1463,7 +1474,7 @@ html, body {
     content: '';
     position: absolute;
     left: -9px;
-    top: 0;
+    top: 20px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -1475,7 +1486,7 @@ html, body {
     content: '';
     position: absolute;
     left: -4px;
-    top: 5px;
+    top: 25px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -1483,7 +1494,7 @@ html, body {
   }
 
   .home-timeline-entry:first-child {
-    border-image: linear-gradient(to bottom, transparent 8px, #d0cce8 8px) 1;
+    border-image: linear-gradient(to bottom, transparent 28px, #d0cce8 28px) 1;
   }
 
   .home-timeline-left {
@@ -1492,12 +1503,17 @@ html, body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 0;
-    margin-bottom: 2px;
+    gap: 8px;
+    margin-bottom: 0;
+    order: 1;
   }
 
   .home-timeline-dates {
-    margin-bottom: 22px;
+    margin-bottom: 0;
+  }
+
+  .home-timeline-role {
+    margin: 0;
   }
 
   .home-timeline-center {
@@ -1506,6 +1522,31 @@ html, body {
 
   .home-timeline-right {
     padding: 0;
+    order: 0;
+    border-top: 1px solid rgba(19, 0, 97, 0.12);
+    padding-top: 20px;
+  }
+
+  .home-timeline-entry {
+    gap: 8px;
+    cursor: pointer;
+    padding-top: 0;
+  }
+
+  .home-timeline-entry:last-child .home-timeline-left {
+    border-bottom: 1px solid rgba(19, 0, 97, 0.12);
+    padding-bottom: 20px;
+  }
+
+  .home-timeline-body {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .home-timeline-entry.is-open .home-timeline-body {
+    max-height: 600px;
   }
 }
 
@@ -1650,7 +1691,8 @@ html, body {
   }
 
   .home-timeline-entry {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding-left: 32px;
     padding-bottom: 32px;
@@ -1666,7 +1708,7 @@ html, body {
     content: '';
     position: absolute;
     left: -9px;
-    top: 0;
+    top: 20px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -1678,7 +1720,7 @@ html, body {
     content: '';
     position: absolute;
     left: -4px;
-    top: 5px;
+    top: 25px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -1686,7 +1728,7 @@ html, body {
   }
 
   .home-timeline-entry:first-child {
-    border-image: linear-gradient(to bottom, transparent 8px, #d0cce8 8px) 1;
+    border-image: linear-gradient(to bottom, transparent 28px, #d0cce8 28px) 1;
   }
 
   .home-timeline-left {
@@ -1695,12 +1737,17 @@ html, body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 0;
-    margin-bottom: 2px;
+    gap: 8px;
+    margin-bottom: 0;
+    order: 1;
   }
 
   .home-timeline-dates {
-    margin-bottom: 22px;
+    margin-bottom: 0;
+  }
+
+  .home-timeline-role {
+    margin: 0;
   }
 
   .home-timeline-center {
@@ -1709,6 +1756,7 @@ html, body {
 
   .home-timeline-right {
     padding: 0;
+    order: 0;
   }
 
   .home-timeline-entry[data-animate] {

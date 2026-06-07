@@ -73,16 +73,12 @@ title: designwithkat — Senior Digital Product Designer
       </div>
     </a>
 
-    <a href="/toyota/" class="home-card home-card--toyota home-card--relative">
-      <div class="home-card-nda">
-        <span class="home-card-nda-icon">🔒</span>
-        <span class="home-card-nda-label">Under NDA</span>
-      </div>
+    <a href="/toyota/" class="home-card home-card--toyota">
       <div class="home-card-meta">
         <span class="home-card-company">Toyota Connected (EU)</span>
         <h3 class="home-card-title">Making Smart Charging effortless</h3>
         <p class="home-card-desc">Revamping the Smart Charging setup experience to simplify onboarding for Toyota EV owners.</p>
-        <span class="home-card-cta">Read Preview →</span>
+        <span class="home-card-cta">Read Case Study →</span>
       </div>
       <div class="home-card-demo home-card-demo--toyota-phones">
         <div class="toyota-card-phones-desktop">
@@ -291,35 +287,39 @@ title: designwithkat — Senior Digital Product Designer
         <div class="home-timeline-line"></div>
       </div>
       <div class="home-timeline-right">
-        <h3 class="home-timeline-role">{{ item.role }}</h3>
-        {% if item.bullets %}
-        <ul class="home-timeline-bullets">
-          {% for bullet in item.bullets %}
-          <li>{{ bullet }}</li>
-          {% endfor %}
-        </ul>
-        {% else %}
-        <p class="home-timeline-desc">{{ item.description }}</p>
-        {% endif %}
-        <div class="home-timeline-pills">
-          {% for activity in item.uiActivities %}
-          <span class="home-timeline-pill home-timeline-pill--rose">{{ activity }}</span>
-          {% endfor %}
-          {% for activity in item.peopleActivities %}
-          <span class="home-timeline-pill home-timeline-pill--teal">{{ activity }}</span>
-          {% endfor %}
-          {% for activity in item.researchActivities %}
-          <span class="home-timeline-pill home-timeline-pill--blue">{{ activity }}</span>
-          {% endfor %}
-          {% for activity in item.marketingActivities %}
-          <span class="home-timeline-pill home-timeline-pill--amber">{{ activity }}</span>
-          {% endfor %}
-          {% for activity in item.mediaActivities %}
-          <span class="home-timeline-pill home-timeline-pill--pink">{{ activity }}</span>
-          {% endfor %}
-          {% for activity in item.activities %}
-          <span class="home-timeline-pill home-timeline-pill--pink">{{ activity }}</span>
-          {% endfor %}
+        <div class="home-timeline-header">
+          <h3 class="home-timeline-role">{{ item.role }}</h3>
+        </div>
+        <div class="home-timeline-body">
+          {% if item.bullets %}
+          <ul class="home-timeline-bullets">
+            {% for bullet in item.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="home-timeline-desc">{{ item.description }}</p>
+          {% endif %}
+          <div class="home-timeline-pills">
+            {% for activity in item.uiActivities %}
+            <span class="home-timeline-pill home-timeline-pill--rose">{{ activity }}</span>
+            {% endfor %}
+            {% for activity in item.peopleActivities %}
+            <span class="home-timeline-pill home-timeline-pill--teal">{{ activity }}</span>
+            {% endfor %}
+            {% for activity in item.researchActivities %}
+            <span class="home-timeline-pill home-timeline-pill--blue">{{ activity }}</span>
+            {% endfor %}
+            {% for activity in item.marketingActivities %}
+            <span class="home-timeline-pill home-timeline-pill--amber">{{ activity }}</span>
+            {% endfor %}
+            {% for activity in item.mediaActivities %}
+            <span class="home-timeline-pill home-timeline-pill--pink">{{ activity }}</span>
+            {% endfor %}
+            {% for activity in item.activities %}
+            <span class="home-timeline-pill home-timeline-pill--pink">{{ activity }}</span>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
