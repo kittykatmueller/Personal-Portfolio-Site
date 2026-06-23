@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:silver-daisy-337649.framer.app)",
+      "Bash(git init)",
+      "Bash(git add toyota.html js/toyota.js assets/)",
+      "Bash(git commit:*)",
+      "Bash(git add toyota.html)",
+      "Bash(npm -v)",
+      "Bash(brew -v)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/kat/**)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Bash(npm init -y)",
+      "Bash(npm install --save-dev @11ty/eleventy)"
+    ]
+  }
+}

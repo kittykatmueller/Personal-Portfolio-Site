@@ -14,11 +14,15 @@ html, body {
   .home-cta-link {
     flex-basis: 100%;
   }
+
+  .nav-heading-badge {
+    display: none;
+  }
 }
 
 @media (max-width: 322px) {
   .home-heading {
-    font-size: 19px;
+    font-size: 24px;
   }
 
   .hero-icon {
@@ -186,15 +190,33 @@ html, body {
 
 .home-heading {
   font-family: 'Merriweather', serif;
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.15;
   color: #130061;
 }
 
 .home-heading em {
   font-style: italic;
   color: #ff4d6d;
+}
+
+.home-hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff4d6d;
+}
+
+.home-hero-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: #777;
+  line-height: 1.7;
+  max-width: 660px;
 }
 
 .hero-icon {
@@ -1565,8 +1587,16 @@ html, body {
   }
 
   .home-heading {
-    font-size: 24px;
-    line-height: 1.5;
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .home-hero-subtitle {
+    font-size: 12px;
+  }
+
+  .home-hero-tagline {
+    font-size: 16px;
   }
 
   /* Work section */
@@ -1830,6 +1860,26 @@ body {
   z-index: 100;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-heading-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #888;
+  background: #f3f3f3;
+  border: 1px solid #e6e6e6;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
 .nav-logo {
   text-decoration: none;
   font-family: 'Merriweather', serif;
@@ -2063,27 +2113,6 @@ body {
   .nav-burger { display: flex; }
 }
 
-/* ── Intro Overlay ── */
-.intro-overlay {
-  position: fixed;
-  inset: 0;
-  background: #16142f;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-}
-
-.intro-logo {
-  width: min(420px, 80vw);
-}
-
-.intro-logo svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 
 /* ── Next Project Card ── */
 .next-project-wrap {
@@ -5326,6 +5355,12 @@ body {
   color: #ff4d6d;
 }
 
+[data-theme="dark"] .nav-heading-badge {
+  color: #9990bb;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 [data-theme="dark"] .nav-text-link {
   color: #c4b8ff;
 }
@@ -5350,6 +5385,11 @@ body {
 [data-theme="dark"] .home-body {
   color: #9990bb;
 }
+
+[data-theme="dark"] .home-hero-tagline {
+  color: #9990bb;
+}
+
 
 [data-theme="dark"] .home-cta {
   background: #ff4d6d;
